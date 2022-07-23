@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
+import BadgeBox from 'components/BadgeBox';
 import Header from 'components/header';
-import HelloWorld from 'components/hello-world';
 
 export default function MainPage() {
     return (
@@ -13,10 +13,11 @@ export default function MainPage() {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    height: 200px;
+
+                    margin: 60px auto;
                 `}
             >
-                <HelloWorld />
+                <BadgeBox />
             </div>
         </div>
     );
