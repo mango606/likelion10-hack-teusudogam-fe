@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import BadgeBox from 'components/badges/badge-box';
-import DefaultLayout from 'layouts/default';
+function MainPage() {
+    const navigate = useNavigate();
 
-export default function MainPage() {
-    return (
-        <DefaultLayout>
-            <BadgeBox />
-        </DefaultLayout>
-    );
+    useEffect(() => {
+        navigate('/badges');
+    }, [navigate]);
+
+    return <div />;
 }
+
+export default MainPage;

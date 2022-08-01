@@ -1,8 +1,9 @@
 import { ThemeProvider } from '@emotion/react';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
-import MainPage from './pages/main';
+import App from './app';
 
 const app = document.getElementById('app');
 
@@ -19,10 +20,13 @@ const theme = {
 };
 
 const root = createRoot(app);
+
 root.render(
     <React.StrictMode>
-        <ThemeProvider theme={theme}>
-            <MainPage />
-        </ThemeProvider>
+        <BrowserRouter>
+            <ThemeProvider theme={theme}>
+                <App />
+            </ThemeProvider>
+        </BrowserRouter>
     </React.StrictMode>,
 );
