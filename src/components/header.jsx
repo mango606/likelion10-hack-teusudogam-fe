@@ -86,7 +86,7 @@ export default function Header() {
             css={css`
                 background-color: ${theme.colors.primary2};
                 display: grid;
-                grid-template-columns: 1fr 1200px 1fr;
+                grid-template-columns: 1fr 1000px 1fr;
                 grid-template-rows: 80px 50px;
             `}
         >
@@ -121,7 +121,7 @@ export default function Header() {
                     flex-direction: row;
                     align-items: center;
                     column-gap: 12px;
-                    width: 1200px;
+                    width: 1000px;
 
                     background-color: ${theme.colors.primary1};
                     border-bottom-left-radius: 8px;
@@ -230,7 +230,7 @@ export default function Header() {
             >
                 <div
                     css={css`
-                        width: 1200px;
+                        width: 1000px;
                         height: 100%;
 
                         margin: 0 auto;

@@ -4,7 +4,9 @@
         "paths": {
             "components/*": ["./src/components/*"],
             "pages/*": ["./src/pages/*"],
-            "assets/*": ["./src/assets/*"]
+            "assets/*": ["./src/assets/*"],
+            "layouts/*": ["./src/layouts/*"],
+            "styles/*": ["./src/styles/*"]
         },
         "jsxImportSource": "@emotion/react"
     }

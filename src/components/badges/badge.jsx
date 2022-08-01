@@ -2,22 +2,38 @@ import { css, useTheme } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Badge({ image, size, badgeName }) {
+export default function Badge({ onClick, image, size, badgeName }) {
     const theme = useTheme();
 
     return (
-        <div
+        <button
+            type="button"
+            onClick={onClick}
             css={css`
+                ${size !== undefined &&
+                css`
+                    width: ${size}px;
+                    height: ${size}px;
+                `}
+
                 color: ${theme.colors.primary1};
                 background-color: ${theme.colors.white};
-                border-radius: 10px;
-                width: ${size}px;
-                height: ${size}px;
-
+                padding: 0;
+                border: 0;
+                border-radius: 8px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
+
+                ${onClick !== undefined &&
+                css`
+                    cursor: pointer;
+
+                    :hover {
+                        opacity: 0.8;
+                    }
+                `}
             `}
         >
             <img
@@ -29,7 +45,7 @@ export default function Badge({ image, size, badgeName }) {
                     height: 100%;
                 `}
             />
-        </div>
+        </button>
     );
 }
 
@@ -37,9 +53,11 @@ Badge.propTypes = {
     image: PropTypes.string.isRequired,
     size: PropTypes.number,
     badgeName: PropTypes.string,
+    onClick: PropTypes.func,
 };
 
 Badge.defaultProps = {
-    size: 50,
+    size: undefined,
     badgeName: 'Default Badge',
+    onClick: undefined,
 };

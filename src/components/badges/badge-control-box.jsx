@@ -2,7 +2,6 @@ import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-// eslint-disable-next-line import/no-unresolved
 import deleteImage from '../assets/mock/badge-control-box-images/delete.png';
 import makeImage from '../assets/mock/badge-control-box-images/make.jpg';
 import watchImage from '../assets/mock/badge-control-box-images/watch.png';
@@ -21,8 +20,7 @@ const Box = styled.div`
 
     width: 400px;
     height: 450px;
-    border-radius: 5%;
-
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,7 +36,7 @@ const Button = styled.button`
 
     width: 300px;
     height: 70px;
-    border-radius: 10px;
+    border-radius: 8px;
     border-width: 0px;
 
     color: ${(props) => props.theme.colors.white};
@@ -55,7 +53,7 @@ export default function BadgeControlBox() {
         <div
             // 전체 컨테이너
             css={css`
-                width: 1200px;
+                width: 1000px;
                 height: 200px;
 
                 display: grid;
