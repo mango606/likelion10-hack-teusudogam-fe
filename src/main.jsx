@@ -20,7 +20,9 @@ const theme = {
 
 const root = createRoot(app);
 root.render(
-    <ThemeProvider theme={theme}>
-        <MainPage />
-    </ThemeProvider>,
+    <React.StrictMode>
+        <ThemeProvider theme={theme}>
+            <MainPage />
+        </ThemeProvider>
+    </React.StrictMode>,
 );

@@ -1,6 +1,5 @@
 import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
 import Badge from './badge';
@@ -19,7 +18,7 @@ const Label = styled.div`
     padding: 10px 20px;
     margin-bottom: 16px;
 
-    &:not(:first-child) {
+    &:not(:first-of-type) {
         margin-top: 16px;
     }
 `;
@@ -179,7 +178,3 @@ export default function BadgeBox() {
         </div>
     );
 }
-
-Label.propTypes = {
-    text: PropTypes.string.isRequired,
-};

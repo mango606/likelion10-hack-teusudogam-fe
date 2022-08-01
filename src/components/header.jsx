@@ -54,7 +54,7 @@ function HeaderLink({ link, children, selected }) {
 
 HeaderLink.propTypes = {
     link: PropTypes.string.isRequired,
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
     selected: PropTypes.bool,
 };
 
