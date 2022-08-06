@@ -1,6 +1,6 @@
 import { css, useTheme } from '@emotion/react';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 
 import StreamerIcon from './streamer-icon';
@@ -12,7 +12,7 @@ import streamer2Image from 'assets/mock/streamer/nokduro.png';
 import streamer1Image from 'assets/mock/streamer/pung.jpeg';
 import streamer0Image from 'assets/mock/streamer/wakgood.jpeg';
 
-function HeaderLink({ link, children, selected }) {
+function HeaderLink({ link, children, onClick }) {
     const theme = useTheme();
 
     return (
@@ -36,7 +36,7 @@ function HeaderLink({ link, children, selected }) {
             >
                 {children}
             </a>
-            {selected ? (
+            {onClick ? (
                 <div
                     css={css`
                         position: absolute;
@@ -55,15 +55,16 @@ function HeaderLink({ link, children, selected }) {
 HeaderLink.propTypes = {
     link: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
-    selected: PropTypes.bool,
+    onClick: PropTypes.bool,
 };
 
 HeaderLink.defaultProps = {
-    selected: false,
+    onClick: false,
 };
 
 export default function Header() {
     const theme = useTheme();
+    const [abc, setAbc] = useState(true);
 
     const streamers = [
         {
@@ -240,9 +241,10 @@ export default function Header() {
                         flex-direction: row;
                     `}
                 >
-                    <HeaderLink link="/" selected>
+                    <HeaderLink link="/" onClick={abc}>
                         전체 뱃지
                     </HeaderLink>
+                    <HeaderLink link="/badge-control">뱃지 관리</HeaderLink>
                 </div>
             </div>
         </div>

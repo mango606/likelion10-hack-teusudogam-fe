@@ -2,9 +2,9 @@ import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import deleteImage from '../assets/mock/badge-control-box-images/delete.png';
-import makeImage from '../assets/mock/badge-control-box-images/make.jpg';
-import watchImage from '../assets/mock/badge-control-box-images/watch.png';
+import deleteImage from '../../assets/mock/badge-control-box-images/delete.png';
+import makeImage from '../../assets/mock/badge-control-box-images/make.jpg';
+import watchImage from '../../assets/mock/badge-control-box-images/watch.png';
 
 const Box = styled.div`
     background: linear-gradient(

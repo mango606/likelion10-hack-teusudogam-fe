@@ -5,7 +5,7 @@ function MainPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        navigate('/badges');
+        navigate('/badge-forum');
     }, [navigate]);
 
     return <div />;
