@@ -20,12 +20,12 @@ const Button = styled.button`
 `;
 
 const Num = styled.div`
-    font-size: 1.8rem;
     font-weight: bold;
+
     color: ${({ theme }) => theme.colors.white};
 `;
 
-export default function ReputationTable({ like, dislike, comment }) {
+export default function ReputationTable({ like, dislike, comment, size }) {
     const theme = useTheme();
 
     return (
@@ -40,7 +40,6 @@ export default function ReputationTable({ like, dislike, comment }) {
                 column-gap: 6px;
 
                 width: auto;
-                height: auto;
             `}
         >
             <Button
@@ -52,35 +51,55 @@ export default function ReputationTable({ like, dislike, comment }) {
                     alt="like"
                     css={css`
                         object-fit: cover;
-                        width: 100%;
-                        height: 100%;
+                        height: ${size}px;
                     `}
                 />
             </Button>
-            <Num>{like}</Num>
+            <Num
+                css={css`
+                    font-size: ${(size - 10) / 20}rem;
+                `}
+            >
+                {like}
+            </Num>
             <Button
                 // 싫어요 버튼
                 type="button"
+                size={size}
             >
                 <img
                     src={DisLikeImage}
                     alt="like"
                     css={css`
                         object-fit: cover;
+                        height: ${size}px;
                     `}
                 />
             </Button>
-            <Num>{dislike}</Num>
-            <Button as="div">
+            <Num
+                css={css`
+                    font-size: ${(size - 10) / 20}rem;
+                `}
+            >
+                {dislike}
+            </Num>
+            <Button as="div" size={size}>
                 <img
                     src={CommentImage}
                     alt="like"
                     css={css`
                         object-fit: cover;
+                        height: ${size}px;
                     `}
                 />
             </Button>
-            <Num>{comment}</Num>
+            <Num
+                css={css`
+                    font-size: ${(size - 10) / 20}rem;
+                `}
+            >
+                {comment}
+            </Num>
         </div>
     );
 }
@@ -89,10 +108,12 @@ ReputationTable.propTypes = {
     like: PropTypes.number,
     dislike: PropTypes.number,
     comment: PropTypes.number,
+    size: PropTypes.number,
 };
 
 ReputationTable.defaultProps = {
     like: 0,
     dislike: 0,
     comment: 0,
+    size: 40,
 };

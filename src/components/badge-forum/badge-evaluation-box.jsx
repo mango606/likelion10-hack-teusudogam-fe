@@ -4,6 +4,8 @@ import React from 'react';
 
 import tempImage from '../../assets/mock/cat.jpeg';
 
+import CommentBox from './comment-box';
+import CommentInputBox from './comment-input-box';
 import ReputationTable from './reputation-table';
 
 export default function BadgeEvaluationBox({
@@ -18,18 +20,26 @@ export default function BadgeEvaluationBox({
 }) {
     const theme = useTheme();
 
-    const contents = [
+    const comments = [
         {
             image: tempImage,
             nickName: '트수1',
             title: '왁두수집가',
             contents: '적당한 조건의 칭호 같아요! Rank 기원!',
+            like: 17,
+            dislike: 3,
+            comment: 2,
+            id: 1,
         },
         {
             image: tempImage,
             nickName: '트수2',
             title: '녹두전장인',
             contents: '이건 못참지!',
+            like: 17,
+            dislike: 3,
+            comment: 2,
+            id: 2,
         },
     ];
 
@@ -39,12 +49,12 @@ export default function BadgeEvaluationBox({
             onClick={onClick}
             css={css`
                 background-color: rgba(0, 0, 0, 0.3);
-                width: auto;
+                width: 1000px;
                 height: auto;
 
                 display: grid;
-                grid-template-columns: 100px 500px auto;
-                grid-template-rows: auto auto auto;
+                grid-template-columns: 100px 500px 360px;
+                grid-template-rows: auto auto auto auto;
 
                 align-items: center;
                 justify-content: center;
@@ -60,11 +70,9 @@ export default function BadgeEvaluationBox({
                 css`
                     cursor: pointer;
                     :hover {
-                        background-color: red;
+                        //background-color: red;
                     }
                 `}
-
-                ${enabled === true && css``}
             `}
         >
             <div
@@ -104,7 +112,6 @@ export default function BadgeEvaluationBox({
                     grid-column: 2;
                     grid-row: 1;
 
-                    background-color: teal;
                     width: auto;
                     height: auto;
 
@@ -124,8 +131,6 @@ export default function BadgeEvaluationBox({
                     grid-column: 2;
                     grid-row: 2;
 
-                    background-color: orange;
-
                     font-size: 1.2rem;
                     color: ${theme.colors.white};
                     font-weight: bold;
@@ -143,8 +148,6 @@ export default function BadgeEvaluationBox({
                 css={css`
                     grid-column: 2;
                     grid-row: 3;
-
-                    background-color: #d69fd6;
 
                     font-size: 1rem;
                     color: ${theme.colors.white};
@@ -168,8 +171,45 @@ export default function BadgeEvaluationBox({
                     like={like}
                     dislike={dislike}
                     comment={comment}
+                    size={50}
                 />
             </div>
+
+            {enabled === true && (
+                <div
+                    // 해당 뱃지 누를 시 컨텐츠를 보여줌
+                    css={css`
+                        grid-column-start: 1;
+                        grid-column-end: 4;
+                        grid-row: 4;
+
+                        display: flex;
+                        flex-direction: column;
+                        row-gap: 10px;
+
+                        margin: 20px auto 0px auto;
+
+                        height: auto;
+
+                        width: 95%;
+                    `}
+                >
+                    <CommentInputBox />
+                    <hr width="90%" color={theme.colors.white} />
+                    {comments.map((com) => (
+                        <CommentBox
+                            key={`com-${com.id}`}
+                            image={tempImage}
+                            nickName={com.nickName}
+                            title={com.title}
+                            contents={com.contents}
+                            like={com.like}
+                            dislike={com.dislike}
+                            comment={com.comment}
+                        />
+                    ))}
+                </div>
+            )}
         </button>
     );
 }
@@ -182,6 +222,7 @@ BadgeEvaluationBox.propTypes = {
     like: PropTypes.number,
     dislike: PropTypes.number,
     comment: PropTypes.number,
+    enabled: PropTypes.bool,
 };
 
 BadgeEvaluationBox.defaultProps = {
@@ -191,4 +232,5 @@ BadgeEvaluationBox.defaultProps = {
     like: 0,
     dislike: 0,
     comment: 0,
+    enabled: undefined,
 };

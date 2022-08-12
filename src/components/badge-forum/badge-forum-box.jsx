@@ -26,6 +26,22 @@ export default function BadgeForumBox() {
             dislike: 10,
             comment: 2,
         },
+        {
+            image: tempBadgeImage,
+            name: '못생 왁두',
+            condition: '우왁 못생겼어',
+            like: 5,
+            dislike: 20,
+            comment: 1,
+        },
+        {
+            image: tempBadgeImage,
+            name: '잘생 왁두',
+            condition: '우왁 잘생겼어',
+            like: 50,
+            dislike: 10,
+            comment: 5,
+        },
     ];
 
     const [currentEvaluation, setCurrentEvaluation] = useState(null);
@@ -40,7 +56,7 @@ export default function BadgeForumBox() {
                     background-color: rgba(0, 0, 0, 0.2);
 
                     width: 1000px;
-                    height: 400px;
+                    height: auto;
 
                     color: ${theme.colors.white};
                     border-radius: 8px;
@@ -68,7 +84,10 @@ export default function BadgeForumBox() {
                         like={evaluation.like}
                         dislike={evaluation.dislike}
                         comment={evaluation.comment}
-                        enabled={currentEvaluation === evaluation}
+                        enabled={
+                            currentEvaluation &&
+                            evaluation.name === currentEvaluation.name
+                        }
                     />
                 ))}
             </div>

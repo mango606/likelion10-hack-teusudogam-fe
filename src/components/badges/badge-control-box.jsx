@@ -1,6 +1,7 @@
 import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import deleteImage from '../../assets/mock/badge-control-box-images/delete.png';
 import makeImage from '../../assets/mock/badge-control-box-images/make.jpg';
@@ -99,7 +100,9 @@ export default function BadgeControlBox() {
                 >
                     다른 사람이 만든 뱃지를 보자!
                 </h1>
-                <Button>뱃지 게시판</Button>
+                <Button>
+                    <Link to="/badge-forum"> 뱃지 게시판</Link>
+                </Button>
             </Box>
             <Box image={deleteImage} /* col="3" */>
                 <h1

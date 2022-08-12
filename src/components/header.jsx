@@ -241,7 +241,7 @@ export default function Header() {
                         flex-direction: row;
                     `}
                 >
-                    <HeaderLink link="/" onClick={abc}>
+                    <HeaderLink link="/badges" onClick={abc}>
                         전체 뱃지
                     </HeaderLink>
                     <HeaderLink link="/badge-control">뱃지 관리</HeaderLink>

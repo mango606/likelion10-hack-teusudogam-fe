@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import BadgeForumBox from 'components/badge-forum/badge-forum-box';
-import BadgeControlBox from 'components/badges/badge-control-box';
+import BadgeControlPage from 'pages/badge-control';
+import BadgeForumPage from 'pages/badge-forum';
 import BadgesPage from 'pages/badges';
 import MainPage from 'pages/main';
 
@@ -11,8 +11,8 @@ function App() {
         <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/badges" element={<BadgesPage />} />
-            <Route path="/badge-control" element={<BadgeControlBox />} />
-            <Route path="/badge-forum" element={<BadgeForumBox />} />
+            <Route path="/badge-control" element={<BadgeControlPage />} />
+            <Route path="/badge-forum" element={<BadgeForumPage />} />
         </Routes>
     );
 }
