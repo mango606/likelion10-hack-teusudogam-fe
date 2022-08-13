@@ -1,5 +1,5 @@
-import { Axios } from 'axios';
-import { useContext } from 'react';
+import axios from 'axios';
+import { useContext, useMemo } from 'react';
 
 import { AuthorizationContext } from 'contexts/authorization-context';
 import createApiUrl from 'utils/create-api-url';
@@ -7,12 +7,14 @@ import createApiUrl from 'utils/create-api-url';
 export default function useAxios() {
     const token = useContext(AuthorizationContext);
 
-    const axios = new Axios({
-        baseURL: createApiUrl(),
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-    });
-
-    return axios;
+    return useMemo(
+        () =>
+            axios.create({
+                baseURL: createApiUrl(),
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }),
+        [token],
+    );
 }

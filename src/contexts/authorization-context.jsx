@@ -24,7 +24,6 @@ export function AuthorizationProvider({ children }) {
 
     const token = useMemo(() => {
         const query = new URLSearchParams(location.search);
-        console.log(query.entries());
         const queriedToken = query.get('accessToken');
         return queriedToken ?? savedToken;
     }, [location.search, savedToken]);

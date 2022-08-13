@@ -7,7 +7,6 @@ import StreamerIcon from './streamer-icon';
 import UserProfileImage from './user-profile-image';
 
 import logoImage from 'assets/logo-white.svg';
-import catImage from 'assets/mock/cat.jpeg';
 import streamer2Image from 'assets/mock/streamer/nokduro.png';
 import streamer1Image from 'assets/mock/streamer/pung.jpeg';
 import streamer0Image from 'assets/mock/streamer/wakgood.jpeg';
@@ -198,7 +197,9 @@ export default function Header() {
                             align-self: flex-end;
                         `}
                     >
-                        {myInformation !== undefined ? myInformation : '로그인'}
+                        {myInformation !== undefined
+                            ? myInformation.userName
+                            : '로그인'}
                     </div>
 
                     <div
@@ -227,7 +228,7 @@ export default function Header() {
                             grid-row-start: 1;
                             grid-row-end: 3;
                         `}
-                        image={catImage}
+                        image={myInformation?.profileImage ?? ''}
                         size={50}
                     />
                 </div>
