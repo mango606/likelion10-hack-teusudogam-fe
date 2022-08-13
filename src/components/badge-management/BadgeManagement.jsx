@@ -9,6 +9,8 @@ import Glass from 'assets/mock/management/glass.png';
 
 import { Link } from "react-router-dom";
 
+import Title from 'components/title';
+
 // 뱃지 검색 함수
 searchSpace = (event) => {
 
@@ -45,30 +47,6 @@ state = {
 
 number = 4;
 
-function ButtonLink({ link, children, selected }) {
-    const theme = useTheme();
-
-    return (
-        <div>
-            <a
-                href={link}
-            >
-                {children}
-            </a>
-        </div>
-    );
-}
-
-ButtonLink.propTypes = {
-    link: PropTypes.string.isRequired,
-    children: PropTypes.element.isRequired,
-    selected: PropTypes.bool,
-};
-
-ButtonLink.defaultProps = {
-    selected: false,
-};
-
 export default function BadgeManagement() {
     const theme = useTheme();
 
@@ -76,24 +54,13 @@ export default function BadgeManagement() {
         <div
             // 전체 컨테이너
             css={css`
-                width: 1200px;
+                width: 1000px;
                 height: 100%;
 
                 display: inline-block;
             `}
         >
-            <div
-                // 이름
-                css={css`
-                    align-items: center;
-
-                    color: ${theme.colors.white};
-                    font-size: 2.5rem;
-                    font-weight: bold;
-                `}
-            >
-                뱃지 수정/삭제
-            </div>
+            <Title>뱃지 수정/삭제</Title>
             <div
                 // 뱃지 검색 박스
                 css={css`
@@ -159,9 +126,7 @@ export default function BadgeManagement() {
                 </span>
                 개
                 </span>
-                <ButtonLink link="/badge-revise" selected>
                 <button class="change">뱃지 수정</button>
-                </ButtonLink>
                 <button class="delete">뱃지 삭제</button>
             </div>
             <hr></hr>

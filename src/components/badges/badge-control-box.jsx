@@ -87,7 +87,9 @@ export default function BadgeControlBox() {
                 >
                     나만의 뱃지를 직접 만들자!
                 </h1>
-                <Button>뱃지 만들기</Button>
+                <Button>
+                    <Link to="/badge-production"> 뱃지 만들기</Link>
+                </Button>
             </Box>
             <Box image={watchImage} /* col="2" */>
                 <h1
@@ -115,7 +117,9 @@ export default function BadgeControlBox() {
                 >
                     내가 만든 뱃지를 관리하자!
                 </h1>
-                <Button>뱃지 수정/삭제</Button>
+                <Button>
+                    <Link to="/badge-management"> 뱃지 수정/삭제</Link>
+                </Button>
             </Box>
         </div>
     );

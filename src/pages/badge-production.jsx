@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import React from 'react';
 
 import Header from 'components/header';
-import BadgeRevise from 'components/badge-revise/BadgeRevise';
+import BadgeProduction from 'components/badge-production/BadgeProduction';
 
 export default function Page4() {
     return (
@@ -17,7 +17,7 @@ export default function Page4() {
                     margin: 60px auto;
                 `}
             >
-                <BadgeRevise />
+                <BadgeProduction />
             </div>
         </div>
     );

@@ -1,8 +1,8 @@
 import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
-import "./BadgeRevise.css";
-import DropHereImage from 'assets/mock/revise/DropHere.png';
+import "./BadgeProduction.css";
+import DropHereImage from 'assets/mock/production/DropHere.png';
 
 export default function Achievements() {
     const theme = useTheme();
