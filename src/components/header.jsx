@@ -245,6 +245,9 @@ export default function Header() {
                         전체 뱃지
                     </HeaderLink>
                     <HeaderLink link="/badge-control">뱃지 관리</HeaderLink>
+                    <HeaderLink link="/badge-management" selected>
+                        뱃지 관리
+                    </HeaderLink>
                 </div>
             </div>
         </div>

@@ -1,0 +1,41 @@
+.name {
+    width: 70%;
+    height: 10%;
+    border-radius: 10px;
+    margin: 0 7%;
+}
+
+.explanation {
+    width: 70%;
+    height: auto;
+    padding: 0 0 12%;
+    border-radius: 10px;
+    margin: 0 4%;
+}
+
+.condition {
+    width: 70%;
+    height: auto;
+    padding: 0 0 7%;
+    border-radius: 10px;
+    margin: 0 4%;
+}
+
+.experience {
+    width: 10%;
+    height: 10%;
+    border-radius: 10px;
+    margin: 0 7%;
+}
+
+.prod, .cancel {
+    background-color: rgba(114, 98, 168, 1);
+    border: none;
+    color: white;
+    padding: 1% 6%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 4% 4%;
+    border-radius: 10px;
+}
