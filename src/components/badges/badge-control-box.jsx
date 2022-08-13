@@ -1,4 +1,4 @@
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -19,103 +19,59 @@ const Box = styled.div`
     background-position: center center;
     background-size: cover;
 
-    width: 400px;
-    height: 450px;
+    height: 400px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
 
-    padding-bottom: 40px;
-
-    // grid-column: ${(props) => props.col};
+    flex: 1;
+    padding: 20px;
 `;
 
-const Button = styled.button`
+const Title = styled.h1`
+    color: ${(props) => props.theme.colors.white};
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-bottom: 30px;
+`;
+
+const Button = styled(Link)`
     background-color: ${(props) => props.theme.colors.primary2};
 
-    width: 300px;
-    height: 70px;
     border-radius: 8px;
     border-width: 0px;
 
     color: ${(props) => props.theme.colors.white};
-    font-size: 1.4rem;
+    font-size: 1rem;
     font-weight: bold;
 
-    margin-top: 20px;
+    padding: 20px;
 `;
 
 export default function BadgeControlBox() {
-    const theme = useTheme();
-
     return (
         <div
             // 전체 컨테이너
             css={css`
-                width: 1000px;
-                height: 200px;
-
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                grid-template-rows: 100px auto;
-                column-gap: 40px;
+                display: flex;
+                flex-direction: row;
+                justify-content: stretch;
+                column-gap: 20px;
             `}
         >
-            <h1
-                css={css`
-                    grid-column-start: 1;
-                    grid-column-end: 4;
-                    grid-row: 1;
-
-                    margin-bottom: 40px;
-
-                    color: ${theme.colors.white};
-                `}
-            >
-                뱃지 관리
-            </h1>
-            <Box image={makeImage} /* col="1" */>
-                <h1
-                    css={css`
-                        color: ${theme.colors.white};
-                        font-size: 1.5rem;
-                        font-weight: 900;
-                        margin-bottom: 30px;
-                    `}
-                >
-                    나만의 뱃지를 직접 만들자!
-                </h1>
-                <Button>뱃지 만들기</Button>
+            <Box image={makeImage}>
+                <Title>나만의 뱃지를 직접 만들자!</Title>
+                <Button to="/">뱃지 만들기</Button>
             </Box>
-            <Box image={watchImage} /* col="2" */>
-                <h1
-                    css={css`
-                        color: ${theme.colors.white};
-                        font-size: 1.5rem;
-                        font-weight: 900;
-                        margin-bottom: 30px;
-                    `}
-                >
-                    다른 사람이 만든 뱃지를 보자!
-                </h1>
-                <Button>
-                    <Link to="/badge-forum"> 뱃지 게시판</Link>
-                </Button>
+            <Box image={watchImage}>
+                <Title>다른 사람이 만든 뱃지를 보자!</Title>
+                <Button to="/badge-forum">뱃지 게시판</Button>
             </Box>
-            <Box image={deleteImage} /* col="3" */>
-                <h1
-                    css={css`
-                        color: ${theme.colors.white};
-                        font-size: 1.5rem;
-                        font-weight: 900;
-                        margin-bottom: 30px;
-                    `}
-                >
-                    내가 만든 뱃지를 관리하자!
-                </h1>
-                <Button>뱃지 수정/삭제</Button>
+            <Box image={deleteImage}>
+                <Title>내가 만든 뱃지를 관리하자!</Title>
+                <Button to="/">뱃지 수정/삭제</Button>
             </Box>
         </div>
     );

@@ -2,16 +2,22 @@ import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function UserProfileImage({ image, size, className }) {
+export default function UserProfileImage({ image, size, className, onClick }) {
     return (
-        <div
+        <button
+            type="button"
             className={className}
             css={css`
                 width: ${size}px;
                 height: ${size}px;
                 border-radius: 8px;
                 overflow: hidden;
+
+                border: 0;
+                background: 0;
+                padding: 0;
             `}
+            onClick={onClick}
         >
             <img
                 src={image}
@@ -22,7 +28,7 @@ export default function UserProfileImage({ image, size, className }) {
                     height: 100%;
                 `}
             />
-        </div>
+        </button>
     );
 }
 

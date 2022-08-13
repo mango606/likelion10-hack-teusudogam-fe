@@ -11,6 +11,7 @@ export default function BadgeForumBox() {
 
     const evaluations = [
         {
+            id: 1,
             image: tempBadgeImage,
             name: '화난 왁두',
             condition: '우왁굳 화내게 하기',
@@ -19,6 +20,7 @@ export default function BadgeForumBox() {
             comment: 4,
         },
         {
+            id: 2,
             image: tempBadgeImage,
             name: '웃는 왁두',
             condition: '우왁굳 웃기기',
@@ -27,6 +29,7 @@ export default function BadgeForumBox() {
             comment: 2,
         },
         {
+            id: 3,
             image: tempBadgeImage,
             name: '못생 왁두',
             condition: '우왁 못생겼어',
@@ -35,6 +38,7 @@ export default function BadgeForumBox() {
             comment: 1,
         },
         {
+            id: 4,
             image: tempBadgeImage,
             name: '잘생 왁두',
             condition: '우왁 잘생겼어',
@@ -48,7 +52,7 @@ export default function BadgeForumBox() {
 
     return (
         <div>
-            <Title> 뱃지 게시판</Title>
+            <Title>뱃지 게시판</Title>
 
             <div
                 // 게시글 전체 컨테이너
@@ -77,7 +81,7 @@ export default function BadgeForumBox() {
                         onClick={() => {
                             setCurrentEvaluation(evaluation);
                         }}
-                        key={`eval-${evaluation.name}`}
+                        key={`eval-${evaluation.id}`}
                         name={evaluation.name}
                         condition={evaluation.condition}
                         image={evaluation.image}
@@ -85,8 +89,8 @@ export default function BadgeForumBox() {
                         dislike={evaluation.dislike}
                         comment={evaluation.comment}
                         enabled={
-                            currentEvaluation &&
-                            evaluation.name === currentEvaluation.name
+                            currentEvaluation !== null &&
+                            evaluation.id === currentEvaluation.id
                         }
                     />
                 ))}

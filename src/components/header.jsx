@@ -1,6 +1,6 @@
 import { css, useTheme } from '@emotion/react';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 
 import StreamerIcon from './streamer-icon';
@@ -11,6 +11,8 @@ import catImage from 'assets/mock/cat.jpeg';
 import streamer2Image from 'assets/mock/streamer/nokduro.png';
 import streamer1Image from 'assets/mock/streamer/pung.jpeg';
 import streamer0Image from 'assets/mock/streamer/wakgood.jpeg';
+import { useMyInformation } from 'contexts/my-information-context';
+import createApiUrl from 'utils/create-api-url';
 
 function HeaderLink({ link, children, onClick }) {
     const theme = useTheme();
@@ -64,7 +66,8 @@ HeaderLink.defaultProps = {
 
 export default function Header() {
     const theme = useTheme();
-    const [abc, setAbc] = useState(true);
+
+    const myInformation = useMyInformation();
 
     const streamers = [
         {
@@ -195,7 +198,7 @@ export default function Header() {
                             align-self: flex-end;
                         `}
                     >
-                        김트수
+                        {myInformation !== undefined ? myInformation : '로그인'}
                     </div>
 
                     <div
@@ -212,6 +215,13 @@ export default function Header() {
                         김트수
                     </div>
                     <UserProfileImage
+                        onClick={() => {
+                            if (typeof window !== 'undefined') {
+                                window.location.href = createApiUrl(
+                                    '/oauth/twitch-local',
+                                );
+                            }
+                        }}
                         css={css`
                             grid-column: 3;
                             grid-row-start: 1;
@@ -241,9 +251,7 @@ export default function Header() {
                         flex-direction: row;
                     `}
                 >
-                    <HeaderLink link="/badges" onClick={abc}>
-                        전체 뱃지
-                    </HeaderLink>
+                    <HeaderLink link="/badges">전체 뱃지</HeaderLink>
                     <HeaderLink link="/badge-control">뱃지 관리</HeaderLink>
                 </div>
             </div>

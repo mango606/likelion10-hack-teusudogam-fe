@@ -6,7 +6,10 @@
             "pages/*": ["./src/pages/*"],
             "assets/*": ["./src/assets/*"],
             "layouts/*": ["./src/layouts/*"],
-            "styles/*": ["./src/styles/*"]
+            "styles/*": ["./src/styles/*"],
+            "utils/*": ["./src/utils/*"],
+            "contexts/*": ["./src/contexts/*"],
+            "hooks/*": ["./src/hooks/*"]
         },
         "jsxImportSource": "@emotion/react"
     }

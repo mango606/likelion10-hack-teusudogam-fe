@@ -5,6 +5,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './app';
 
+import { AuthorizationProvider } from 'contexts/authorization-context';
+import { MyInformationProvider } from 'contexts/my-information-context';
+
 const app = document.getElementById('app');
 
 const theme = {
@@ -25,7 +28,11 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <ThemeProvider theme={theme}>
-                <App />
+                <AuthorizationProvider>
+                    <MyInformationProvider>
+                        <App />
+                    </MyInformationProvider>
+                </AuthorizationProvider>
             </ThemeProvider>
         </BrowserRouter>
     </React.StrictMode>,

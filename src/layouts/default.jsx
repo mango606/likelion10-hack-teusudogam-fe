@@ -26,7 +26,7 @@ function DefaultLayout({ children }) {
 }
 
 DefaultLayout.propTypes = {
-    children: PropTypes.element,
+    children: PropTypes.node,
 };
 
 DefaultLayout.defaultProps = {

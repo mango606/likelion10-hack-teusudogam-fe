@@ -30,7 +30,7 @@ export default function CommentInputBox() {
                     column-gap: 20px;
                 `}
             >
-                <input
+                <textarea
                     // 입력부
                     css={css`
                         background-color: ${theme.colors.white};
