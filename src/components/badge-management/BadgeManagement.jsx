@@ -72,9 +72,8 @@ export default function BadgeManagement() {
                 margin: 4% 0 2% 0;
                 
                 padding: 3% 4%;
-                margin-left: 3.4%;
-                width: 88.6%;
-                height: 30%;
+                width: 900px;
+                height: 30px;
                 `}
             >
                 <div
