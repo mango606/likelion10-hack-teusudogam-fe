@@ -27,7 +27,7 @@ export default function Achievements() {
                     width: 900px;
                     height: 500px;
 
-                    margin: 0 5%;
+                    margin: 0% 5%;
 
                     display: grid;
 
@@ -61,7 +61,7 @@ export default function Achievements() {
                     grid-row: 1;
                     grid-column: 4;
 
-                    margin: 12% 0% 1% 0%;
+                    margin: 13% 0% 1% 0%;
                 `}
                 >
                     <div
@@ -88,20 +88,20 @@ export default function Achievements() {
                                     type="text"
                                     maxlength="200"
                                 />
-                                </p>
+                            </p>
                             <p>획득조건
                                 <input className="conditionBox"
                                     type="text"
                                     maxlength="200"
                                 />
-                                </p>
+                            </p>
                             <p>경험치
                                 <input className="experienceBox"
                                     type="number"
                                     min="0"
                                     max="999"
                                 />
-                                </p>
+                            </p>
                         </label>
                     </div>
                 </div>
