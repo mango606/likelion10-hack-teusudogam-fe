@@ -17,26 +17,20 @@ searchSpace = (event) => {
 }
 
 const styleInfo = {
-    padding: "5%",
-}
-
-const styleInfo2 = {
-    padding: "7%",
+    padding: "1%"
 }
 
 const items = Information.map(data => {
     return (
         <div>
-            <ul>
-                <li>
-                    <input type="checkbox"></input>
-                    <span style={styleInfo}><img src={data.route} style={{ maxWidth: '7%' }} /></span>
-                    <span style={styleInfo}>{data.name}</span>
-                    <span style={styleInfo}>{data.tag}</span>
-                    <span style={styleInfo}>{data.condition}</span>
-                    <span style={styleInfo}>{data.rank}</span>
-                </li>
-            </ul>
+            <ol>
+                <input type="checkbox"></input>
+                <span style={styleInfo}><img src={data.route} style={{ maxWidth: '80px' }} /></span>
+                <span style={styleInfo}>{data.name}</span>
+                <span style={styleInfo}>{data.tag}</span>
+                <span style={styleInfo}>{data.condition}</span>
+                <span style={styleInfo}>{data.rank}</span>
+            </ol>
         </div>
     )
 })
@@ -57,7 +51,7 @@ export default function BadgeManagement() {
                 width: 1000px;
                 height: 100%;
 
-                display: inline-block;
+                display: grid;
             `}
         >
             <Title>뱃지 수정/삭제</Title>
@@ -66,13 +60,16 @@ export default function BadgeManagement() {
                 css={css`
                 background-color: rgba(32, 29, 43, 1);
 
+                grid-row: 2;
+                grid-column: 1;
+
                 justify-content: center;
 
                 border-radius: 10px;
-                margin: 4% 0 2% 0;
+                margin: 2% 0;
                 
-                padding: 3% 4%;
-                width: 900px;
+                padding: 30px 50px;
+                width: 1000px;
                 height: 30px;
                 `}
             >
@@ -92,9 +89,11 @@ export default function BadgeManagement() {
                             placeholder=" 뱃지 이름 또는 태그 입력"
                             onChange={(e) => this.searchSpace(e)}
                         />
+
                         <button type="button" className="searchbt">
                             <img src={Glass} style={{ maxWidth: '50%' }} />
                         </button>
+
                         <select value={this.state.con}>
                             <option value="검색 조건" disabled>검색 조건</option>
                             <option value="뱃지 이름">뱃지 이름</option>
@@ -104,62 +103,36 @@ export default function BadgeManagement() {
                     </label>
                 </div>
             </div>
-            <div
-                css={css`
-            color: ${theme.colors.white};
-            font-size: 15px;
-
-            text-align: left;
-            margin-left: 4%;
-        `}
-            >
+            <div>
                 <span css={css`
                 position: relative;
                 top: 20px;
+                color: ${theme.colors.white};
+    font-size: 15px;
                 `}>
                     총 뱃지 수
-                <span css={css`
+                    <span css={css`
                         color: rgba(114, 98, 168, 1);
                         text-align: right;
                     `}> {number}
-                </span>
-                개
+                    </span>
+                    개
                 </span>
                 <button class="change">뱃지 수정</button>
                 <button class="delete">뱃지 삭제</button>
             </div>
+
             <hr></hr>
-            <div
-                // 뱃지 분류 박스
-                css={css`
-                background-color: rgba(32, 29, 43, 1);
 
-                justify-content: center;
-
-                border-radius: 10px;
-                margin: 3% 0 1% 0;
-                
-                padding: 2% 4%;
-                margin-left: 3.4%;
-                width: 88.6%;
-                height: 20%;
-                `}
-            >
-                <div
-                    css={css`
-                        color: ${theme.colors.white};
-                        font-size: 15px;
-
-                        text-align: center;
-                    `}
-                >
+            <div>
+                <ol>
                     <input type="checkbox"></input>
-                    <span style={styleInfo2}>이미지</span>
-                    <span style={styleInfo2}>뱃지 이름</span>
-                    <span style={styleInfo2}>태그</span>
-                    <span style={styleInfo2}>달성 조건</span>
-                    <span style={styleInfo2}>랭크 여부</span>
-                </div>
+                    <span style={styleInfo}>이미지</span>
+                    <span style={styleInfo}>뱃지 이름</span>
+                    <span style={styleInfo}>태그</span>
+                    <span style={styleInfo}>달성 조건</span>
+                    <span style={styleInfo}>랭크 여부</span>
+                </ol>
             </div>
             <div>
                 {items}
