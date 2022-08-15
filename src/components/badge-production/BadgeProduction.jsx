@@ -20,48 +20,45 @@ export default function Achievements() {
         >
             <Title>뱃지 만들기</Title>
             <div
-                // 큰 업적창 박스
+                // 큰 뱃지 생성 박스
                 css={css`
                     background-color: rgba(62, 53, 92, 1);
 
                     width: 900px;
-                    height: 500px;
-
+                    height: 480px;
                     margin: 0% 5%;
+                    border-radius: 10px;
 
                     display: grid;
-
-                    border-radius: 10px;
                 `}
             >
                 <div
-                    // 업적 박스(좌)
+                    // 업적 사진 박스 (좌)
                     css={css`
-                background-color: rgba(239, 239, 239, 0.19);
-                    grid-row: 1;
-                    
-                    grid-column: 1;
-	                grid-column-end: 4;
+                        background-color: rgba(239, 239, 239, 0.19);
+                        grid-row: 1;
+                        grid-column: 1;
+                        grid-column-end: 4;
 
-                    width: 250px;
-                    text-align: center;
-                    padding : 20% 0;
-                    margin: 20% 20% 10% 20%;
-                    height: auto;
+                        width: 250px;
+                        height: 100px;
+                        padding : 20% 0;
+                        margin: 20% 20% 1% 20%;
+
+                        text-align: center;
                 `}
                 >
-                    <img src={DropHereImage} style={{ maxWidth: '40%' }} />
+                    <img src={DropHereImage} style={{ maxWidth: '35%' }} />
                 </div>
                 <div
                     // 업적 박스 (우)
                     css={css`
-                    width: 500px;
-                    height: auto;
+                        grid-row: 1;
+                        grid-column: 4;
 
-                    grid-row: 1;
-                    grid-column: 4;
-
-                    margin: 13% 0% 1% 0%;
+                        width: 500px;
+                        height: auto;
+                        margin: 9% 0% 1% 0%;
                 `}
                 >
                     <div
@@ -108,12 +105,12 @@ export default function Achievements() {
                 <div
                     // 생성, 취소 버튼
                     css={css`
-                width: 100%;
-                height: auto;
+                        width: 100%;
+                        height: auto;
 
-                grid-row: 2;
-                grid-column-start: 2;
-                grid-column-end: 5;
+                        grid-row: 2;
+                        grid-column-start: 2;
+                        grid-column-end: 5;
             `}
                 >
                     <button class="prod">생성</button>
