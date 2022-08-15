@@ -16,6 +16,7 @@ searchSpace = (event) => {
 
 }
 
+// 뱃지 리스트 스타일
 const styleInfo = {
     padding: "1%"
 }
@@ -34,11 +35,12 @@ const items = Information.map(data => {
         </div>
     )
 })
+
 // 검색 조건
 state = {
-    con: this
 }
 
+// 뱃지 총 개수
 number = 4;
 
 export default function BadgeManagement() {
@@ -46,7 +48,7 @@ export default function BadgeManagement() {
 
     return (
         <div
-            // 전체 컨테이너
+            // 전체 컨테이너 박스
             css={css`
                 width: 1000px;
                 height: 100%;
@@ -58,22 +60,23 @@ export default function BadgeManagement() {
             <div
                 // 뱃지 검색 박스
                 css={css`
-                background-color: rgba(32, 29, 43, 1);
+                    background-color: rgba(32, 29, 43, 1);
 
-                grid-row: 2;
-                grid-column: 1;
+                    grid-row: 2;
+                    grid-column: 1;
 
-                justify-content: center;
+                    justify-content: center;
 
-                border-radius: 10px;
-                margin: 2% 0;
-                
-                padding: 30px 50px;
-                width: 1000px;
-                height: 30px;
+                    border-radius: 10px;
+                    margin: 2% 0;
+                    padding: 30px 50px;
+
+                    width: 1000px;
+                    height: 30px;
                 `}
             >
                 <div
+                    // 폰트
                     css={css`
                         color: ${theme.colors.white};
                         font-size: 20px;
@@ -103,12 +106,13 @@ export default function BadgeManagement() {
                     </label>
                 </div>
             </div>
+
             <div>
                 <span css={css`
-                position: relative;
-                top: 20px;
-                color: ${theme.colors.white};
-    font-size: 15px;
+                    position: relative;
+                    top: 20px;
+                    color: ${theme.colors.white};
+                    font-size: 15px;
                 `}>
                     총 뱃지 수
                     <span css={css`
@@ -118,11 +122,14 @@ export default function BadgeManagement() {
                     </span>
                     개
                 </span>
+
                 <button class="change">뱃지 수정</button>
                 <button class="delete">뱃지 삭제</button>
             </div>
 
-            <hr></hr>
+            <hr css={css`
+                    margin: 2% 0;
+            `}></hr>
 
             <div>
                 <ol>

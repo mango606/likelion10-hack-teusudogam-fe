@@ -1,4 +1,5 @@
 .search {
+    /* 뱃지 이름 또는 태그 입력 */
     background-color: rgba(22, 20, 30, 1);
     border: none;
     color: white;
@@ -8,6 +9,7 @@
     margin: 0 0 0 4%;
 }
 .searchbt {
+    /* 돋보기 버튼 */
     background-color: transparent;
     border: none;
     width: 5%;
@@ -16,10 +18,8 @@
     position: relative;
     right: 5%;
 }
-hr {
-    margin: 2% 0;
-}
 select {
+    /* 검색 조건 선택 */
     background-color: rgba(22, 20, 30, 1);
     border: none;
     color: white;
@@ -32,6 +32,7 @@ select {
 }
 .change,
 .delete {
+    /* 뱃지 수정, 삭제 버튼 */
     background-color: rgba(114, 98, 168, 1);
     border: none;
     color: white;
@@ -45,10 +46,12 @@ select {
     left: 65%;
 }
 input[type="checkbox"] {
+    /* 체크 박스 사이즈 */
     width: 15px;
     height: 15px;
 }
 ol {
+    /* 출력 리스트 기본값 */
     display: grid;
     grid-template-columns: 5% 10% 20% 15% 25% 20%;
     justify-content: stretch;
