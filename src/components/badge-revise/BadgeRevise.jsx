@@ -1,12 +1,11 @@
 import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
-import "./BadgeProduction.css";
-import DropHereImage from 'assets/mock/production/DropHere.png';
+import "./BadgeRevise.css";
 
 import Title from 'components/title';
 
-export default function BadgeProduction() {
+export default function BadgeRevise() {
     const theme = useTheme();
 
     return (
@@ -18,7 +17,7 @@ export default function BadgeProduction() {
                 margin: auto;
             `}
         >
-            <Title>뱃지 만들기</Title>
+            <Title>뱃지 수정</Title>
             <div
                 // 큰 뱃지 생성 박스
                 css={css`
@@ -48,7 +47,6 @@ export default function BadgeProduction() {
                         text-align: center;
                 `}
                 >
-                    <img src={DropHereImage} style={{ maxWidth: '35%' }} />
                 </div>
                 <div
                     // 업적 박스 (우)
@@ -103,7 +101,7 @@ export default function BadgeProduction() {
                     </div>
                 </div>
                 <div
-                    // 생성, 취소 버튼
+                    // 수정, 취소 버튼
                     css={css`
                         width: 100%;
                         height: auto;
@@ -113,7 +111,7 @@ export default function BadgeProduction() {
                         grid-column-end: 5;
             `}
                 >
-                    <button class="prod">생성</button>
+                    <button class="prod">수정</button>
                     <button class="cancel">취소</button>
                 </div>
             </div>

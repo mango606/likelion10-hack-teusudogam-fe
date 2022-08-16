@@ -123,7 +123,9 @@ export default function BadgeManagement() {
                     개
                 </span>
 
-                <button class="change">뱃지 수정</button>
+                <button class="change">
+                    <Link to="/badge-revise">뱃지 수정</Link>
+                </button>
                 <button class="delete">뱃지 삭제</button>
             </div>
 
