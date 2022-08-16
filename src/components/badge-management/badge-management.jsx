@@ -1,7 +1,6 @@
 import { css, useTheme } from '@emotion/react';
 import React, { useState } from 'react';
 
-import './BadgeManagement.css';
 import Information from './badge-information';
 
 import Glass from 'assets/mock/management/glass.png';
@@ -15,8 +14,28 @@ const styleInfo = {
 const items = Information.map((data) => {
     return (
         <div>
-            <ol>
-                <input type="checkbox" />
+            <ol
+                css={css`
+                    display: grid;
+                    grid-template-columns: 5% 10% 20% 15% 25% 20%;
+                    justify-content: stretch;
+
+                    list-style-type: none;
+
+                    background-color: rgba(32, 29, 43, 1);
+
+                    text-align: center;
+
+                    border-radius: 10px;
+                    margin: 1% 0;
+                    padding: 1% 50px;
+                    width: 1000px;
+                    height: auto;
+                    color: white;
+                    font-size: 15px;
+                `}
+            >
+                <input type="checkbox" width="15px" height="15px" />
                 <span style={styleInfo}>
                     <img src={data.route} alt="" style={{ maxWidth: '80px' }} />
                 </span>
@@ -77,13 +96,34 @@ export default function BadgeManagement() {
                         뱃지 검색
                         <input
                             id="search-input"
-                            className="search"
                             type="text"
                             placeholder=" 뱃지 이름 또는 태그 입력"
                             onChange={(event) => {}}
+                            css={css`
+                                /* 뱃지 이름 또는 태그 입력 */
+                                background-color: rgba(22, 20, 30, 1);
+                                border: none;
+                                color: white;
+                                width: 32%;
+                                height: 10%;
+                                border-radius: 10px;
+                                margin: 0 0 0 4%;
+                            `}
                         />
                     </label>
-                    <button type="button" className="searchbt">
+                    <button
+                        type="button"
+                        css={css`
+                            /* 돋보기 버튼 */
+                            background-color: transparent;
+                            border: none;
+                            width: 5%;
+                            height: 10%;
+
+                            position: relative;
+                            right: 5%;
+                        `}
+                    >
                         <img
                             src={Glass}
                             alt="Search"
@@ -95,6 +135,18 @@ export default function BadgeManagement() {
                         onChange={(event) => {
                             setSearchType(event.value);
                         }}
+                        css={css`
+                            /* 검색 조건 선택 */
+                            background-color: rgba(22, 20, 30, 1);
+                            border: none;
+                            color: white;
+                            width: 12%;
+                            height: 10%;
+                            border-radius: 10px;
+
+                            position: relative;
+                            right: 3%;
+                        `}
                     >
                         <option value="검색 조건" disabled>
                             검색 조건
@@ -128,10 +180,42 @@ export default function BadgeManagement() {
                     개
                 </span>
 
-                <button type="button" className="change">
+                <button
+                    type="button"
+                    css={css`
+                        /* 뱃지 수정, 삭제 버튼 */
+                        background-color: rgba(114, 98, 168, 1);
+                        border: none;
+                        color: white;
+                        padding: 1% 2.8%;
+                        text-align: center;
+                        font-size: 15px;
+                        margin: 1% 1%;
+                        border-radius: 10px;
+
+                        position: relative;
+                        left: 65%;
+                    `}
+                >
                     뱃지 수정
                 </button>
-                <button type="button" className="delete">
+                <button
+                    type="button"
+                    css={css`
+                        /* 뱃지 수정, 삭제 버튼 */
+                        background-color: rgba(114, 98, 168, 1);
+                        border: none;
+                        color: white;
+                        padding: 1% 2.8%;
+                        text-align: center;
+                        font-size: 15px;
+                        margin: 1% 1%;
+                        border-radius: 10px;
+
+                        position: relative;
+                        left: 65%;
+                    `}
+                >
                     뱃지 삭제
                 </button>
             </div>
