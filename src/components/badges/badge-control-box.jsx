@@ -63,7 +63,7 @@ export default function BadgeControlBox() {
         >
             <Box image={makeImage}>
                 <Title>나만의 뱃지를 직접 만들자!</Title>
-                <Button to="/">뱃지 만들기</Button>
+                <Button to="/badge-production">뱃지 만들기</Button>
             </Box>
             <Box image={watchImage}>
                 <Title>다른 사람이 만든 뱃지를 보자!</Title>

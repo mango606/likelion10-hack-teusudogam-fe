@@ -1,9 +1,8 @@
 import { css, useTheme } from '@emotion/react';
-import styled from '@emotion/styled';
 import React from 'react';
-import "./BadgeProduction.css";
-import DropHereImage from 'assets/mock/production/DropHere.png';
 
+import './BadgeProduction.css';
+import DropHereImage from 'assets/mock/production/DropHere.png';
 import Title from 'components/title';
 
 export default function Achievements() {
@@ -42,11 +41,11 @@ export default function Achievements() {
 
                         width: 250px;
                         height: 100px;
-                        padding : 20% 0;
+                        padding: 20% 0;
                         margin: 20% 20% 1% 20%;
 
                         text-align: center;
-                `}
+                    `}
                 >
                     <img src={DropHereImage} style={{ maxWidth: '35%' }} />
                 </div>
@@ -59,41 +58,49 @@ export default function Achievements() {
                         width: 500px;
                         height: auto;
                         margin: 9% 0% 1% 0%;
-                `}
+                    `}
                 >
                     <div
                         // 업적 입력 박스
                         css={css`
-                        color: ${theme.colors.white};
-                        font-size: 18px;
-                        font-weight: bold;
-                        text-align: left;
+                            color: ${theme.colors.white};
+                            font-size: 18px;
+                            font-weight: bold;
+                            text-align: left;
 
-                        width: auto;
-                        height: auto;
-                    `}
+                            width: auto;
+                            height: auto;
+                        `}
                     >
                         <label>
-                            <p>업적명
-                                <input className="nameBox"
+                            <p>
+                                업적명
+                                <input
+                                    className="nameBox"
                                     type="text"
-                                    maxlength="15"
+                                    maxLength="15"
                                 />
                             </p>
-                            <p>업적설명
-                                <input className="explanationBox"
+                            <p>
+                                업적설명
+                                <input
+                                    className="explanationBox"
                                     type="text"
-                                    maxlength="200"
+                                    maxLength="200"
                                 />
                             </p>
-                            <p>획득조건
-                                <input className="conditionBox"
+                            <p>
+                                획득조건
+                                <input
+                                    className="conditionBox"
                                     type="text"
-                                    maxlength="200"
+                                    maxLength="200"
                                 />
                             </p>
-                            <p>경험치
-                                <input className="experienceBox"
+                            <p>
+                                경험치
+                                <input
+                                    className="experienceBox"
                                     type="number"
                                     min="0"
                                     max="999"
@@ -111,10 +118,10 @@ export default function Achievements() {
                         grid-row: 2;
                         grid-column-start: 2;
                         grid-column-end: 5;
-            `}
+                    `}
                 >
-                    <button class="prod">생성</button>
-                    <button class="cancel">취소</button>
+                    <button className="prod">생성</button>
+                    <button className="cancel">취소</button>
                 </div>
             </div>
         </div>

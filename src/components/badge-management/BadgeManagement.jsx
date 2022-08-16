@@ -1,44 +1,39 @@
 import { css, useTheme } from '@emotion/react';
-import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
 import React from 'react';
-import "./BadgeManagement.css";
+
+import './BadgeManagement.css';
 import Information from './BadgeInformation';
 
 import Glass from 'assets/mock/management/glass.png';
-
-import { Link } from "react-router-dom";
-
 import Title from 'components/title';
 
 // 뱃지 검색 함수
-searchSpace = (event) => {
-
-}
+searchSpace = (event) => {};
 
 // 뱃지 리스트 스타일
 const styleInfo = {
-    padding: "1%"
-}
+    padding: '1%',
+};
 
-const items = Information.map(data => {
+const items = Information.map((data) => {
     return (
         <div>
             <ol>
-                <input type="checkbox"></input>
-                <span style={styleInfo}><img src={data.route} style={{ maxWidth: '80px' }} /></span>
+                <input type="checkbox" />
+                <span style={styleInfo}>
+                    <img src={data.route} style={{ maxWidth: '80px' }} />
+                </span>
                 <span style={styleInfo}>{data.name}</span>
                 <span style={styleInfo}>{data.tag}</span>
                 <span style={styleInfo}>{data.condition}</span>
                 <span style={styleInfo}>{data.rank}</span>
             </ol>
         </div>
-    )
-})
+    );
+});
 
 // 검색 조건
-state = {
-}
+state = {};
 
 // 뱃지 총 개수
 number = 4;
@@ -87,18 +82,19 @@ export default function BadgeManagement() {
                 >
                     <label>
                         뱃지 검색
-                        <input className="search"
+                        <input
+                            className="search"
                             type="text"
                             placeholder=" 뱃지 이름 또는 태그 입력"
                             onChange={(e) => this.searchSpace(e)}
                         />
-
                         <button type="button" className="searchbt">
                             <img src={Glass} style={{ maxWidth: '50%' }} />
                         </button>
-
                         <select value={this.state.con}>
-                            <option value="검색 조건" disabled>검색 조건</option>
+                            <option value="검색 조건" disabled>
+                                검색 조건
+                            </option>
                             <option value="뱃지 이름">뱃지 이름</option>
                             <option value="태그">태그</option>
                             <option value="랭크 여부">랭크 여부</option>
@@ -108,32 +104,40 @@ export default function BadgeManagement() {
             </div>
 
             <div>
-                <span css={css`
-                    position: relative;
-                    top: 20px;
-                    color: ${theme.colors.white};
-                    font-size: 15px;
-                `}>
+                <span
+                    css={css`
+                        position: relative;
+                        top: 20px;
+                        color: ${theme.colors.white};
+                        font-size: 15px;
+                    `}
+                >
                     총 뱃지 수
-                    <span css={css`
-                        color: rgba(114, 98, 168, 1);
-                        text-align: right;
-                    `}> {number}
+                    <span
+                        css={css`
+                            color: rgba(114, 98, 168, 1);
+                            text-align: right;
+                        `}
+                    >
+                        {' '}
+                        {number}
                     </span>
                     개
                 </span>
 
-                <button class="change">뱃지 수정</button>
-                <button class="delete">뱃지 삭제</button>
+                <button className="change">뱃지 수정</button>
+                <button className="delete">뱃지 삭제</button>
             </div>
 
-            <hr css={css`
+            <hr
+                css={css`
                     margin: 2% 0;
-            `}></hr>
+                `}
+            />
 
             <div>
                 <ol>
-                    <input type="checkbox"></input>
+                    <input type="checkbox" />
                     <span style={styleInfo}>이미지</span>
                     <span style={styleInfo}>뱃지 이름</span>
                     <span style={styleInfo}>태그</span>
@@ -141,9 +145,7 @@ export default function BadgeManagement() {
                     <span style={styleInfo}>랭크 여부</span>
                 </ol>
             </div>
-            <div>
-                {items}
-            </div>
+            <div>{items}</div>
         </div>
     );
 }
