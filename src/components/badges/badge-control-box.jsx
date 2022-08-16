@@ -71,7 +71,7 @@ export default function BadgeControlBox() {
             </Box>
             <Box image={deleteImage}>
                 <Title>내가 만든 뱃지를 관리하자!</Title>
-                <Button to="/">뱃지 수정/삭제</Button>
+                <Button to="/badge-management">뱃지 수정/삭제</Button>
             </Box>
         </div>
     );
