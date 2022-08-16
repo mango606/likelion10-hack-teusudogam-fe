@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
-import BadgeProduction from 'components/badge-production/BadgeProduction';
+import BadgeProduction from 'components/badge-production/badge-production';
 import Header from 'components/header';
 
 export default function Page4() {

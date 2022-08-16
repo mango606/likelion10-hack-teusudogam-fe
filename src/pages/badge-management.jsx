@@ -1,10 +1,10 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
+import BadgeManagement from 'components/badge-management/badge-management';
 import Header from 'components/header';
-import BadgeManagement from 'components/badge-management/BadgeManagement';
 
-export default function Page3() {
+export default function BadgeManagementPage() {
     return (
         <div>
             <Header />

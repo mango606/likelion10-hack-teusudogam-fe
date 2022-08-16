@@ -1,9 +1,21 @@
 import { css, useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
 import React from 'react';
 
-import './BadgeProduction.css';
 import DropHereImage from 'assets/mock/production/DropHere.png';
 import Title from 'components/title';
+
+const Button = styled.button`
+    background-color: rgba(114, 98, 168, 1);
+    border: none;
+    color: white;
+    padding: 1% 10%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 1% 1% 1% 11%;
+    border-radius: 10px;
+`;
 
 export default function Achievements() {
     const theme = useTheme();
@@ -47,7 +59,13 @@ export default function Achievements() {
                         text-align: center;
                     `}
                 >
-                    <img src={DropHereImage} style={{ maxWidth: '35%' }} />
+                    <img
+                        src={DropHereImage}
+                        alt="Drop Here"
+                        css={css`
+                            max-width: 35%;
+                        `}
+                    />
                 </div>
                 <div
                     // 업적 박스 (우)
@@ -76,7 +94,12 @@ export default function Achievements() {
                             <p>
                                 업적명
                                 <input
-                                    className="nameBox"
+                                    css={css`
+                                        width: 70%;
+                                        height: 30%;
+                                        border-radius: 10px;
+                                        margin: 0 38px;
+                                    `}
                                     type="text"
                                     maxLength="15"
                                 />
@@ -84,7 +107,13 @@ export default function Achievements() {
                             <p>
                                 업적설명
                                 <input
-                                    className="explanationBox"
+                                    css={css`
+                                        width: 70%;
+                                        height: auto;
+                                        padding: 0 0 12% 0;
+                                        border-radius: 10px;
+                                        margin: 0 20px;
+                                    `}
                                     type="text"
                                     maxLength="200"
                                 />
@@ -92,7 +121,13 @@ export default function Achievements() {
                             <p>
                                 획득조건
                                 <input
-                                    className="conditionBox"
+                                    css={css`
+                                        width: 70%;
+                                        height: auto;
+                                        padding: 0 0 7% 0;
+                                        border-radius: 10px;
+                                        margin: 0 20px;
+                                    `}
                                     type="text"
                                     maxLength="200"
                                 />
@@ -100,7 +135,12 @@ export default function Achievements() {
                             <p>
                                 경험치
                                 <input
-                                    className="experienceBox"
+                                    css={css`
+                                        width: 10%;
+                                        height: 10%;
+                                        border-radius: 10px;
+                                        margin: 0 38px;
+                                    `}
                                     type="number"
                                     min="0"
                                     max="999"
@@ -120,8 +160,8 @@ export default function Achievements() {
                         grid-column-end: 5;
                     `}
                 >
-                    <button className="prod">생성</button>
-                    <button className="cancel">취소</button>
+                    <Button>생성</Button>
+                    <Button>취소</Button>
                 </div>
             </div>
         </div>

@@ -1,14 +1,11 @@
 import { css, useTheme } from '@emotion/react';
-import React from 'react';
+import React, { useState } from 'react';
 
 import './BadgeManagement.css';
-import Information from './BadgeInformation';
+import Information from './badge-information';
 
 import Glass from 'assets/mock/management/glass.png';
 import Title from 'components/title';
-
-// 뱃지 검색 함수
-searchSpace = (event) => {};
 
 // 뱃지 리스트 스타일
 const styleInfo = {
@@ -21,7 +18,7 @@ const items = Information.map((data) => {
             <ol>
                 <input type="checkbox" />
                 <span style={styleInfo}>
-                    <img src={data.route} style={{ maxWidth: '80px' }} />
+                    <img src={data.route} alt="" style={{ maxWidth: '80px' }} />
                 </span>
                 <span style={styleInfo}>{data.name}</span>
                 <span style={styleInfo}>{data.tag}</span>
@@ -32,14 +29,10 @@ const items = Information.map((data) => {
     );
 });
 
-// 검색 조건
-state = {};
-
-// 뱃지 총 개수
-number = 4;
-
 export default function BadgeManagement() {
     const theme = useTheme();
+    const [searchType, setSearchType] = useState();
+    const totalBadges = 0;
 
     return (
         <div
@@ -80,26 +73,36 @@ export default function BadgeManagement() {
                         text-align: left;
                     `}
                 >
-                    <label>
+                    <label htmlFor="search-input">
                         뱃지 검색
                         <input
+                            id="search-input"
                             className="search"
                             type="text"
                             placeholder=" 뱃지 이름 또는 태그 입력"
-                            onChange={(e) => this.searchSpace(e)}
+                            onChange={(event) => {}}
                         />
-                        <button type="button" className="searchbt">
-                            <img src={Glass} style={{ maxWidth: '50%' }} />
-                        </button>
-                        <select value={this.state.con}>
-                            <option value="검색 조건" disabled>
-                                검색 조건
-                            </option>
-                            <option value="뱃지 이름">뱃지 이름</option>
-                            <option value="태그">태그</option>
-                            <option value="랭크 여부">랭크 여부</option>
-                        </select>
                     </label>
+                    <button type="button" className="searchbt">
+                        <img
+                            src={Glass}
+                            alt="Search"
+                            style={{ maxWidth: '50%' }}
+                        />
+                    </button>
+                    <select
+                        value={searchType}
+                        onChange={(event) => {
+                            setSearchType(event.value);
+                        }}
+                    >
+                        <option value="검색 조건" disabled>
+                            검색 조건
+                        </option>
+                        <option value="뱃지 이름">뱃지 이름</option>
+                        <option value="태그">태그</option>
+                        <option value="랭크 여부">랭크 여부</option>
+                    </select>
                 </div>
             </div>
 
@@ -120,13 +123,17 @@ export default function BadgeManagement() {
                         `}
                     >
                         {' '}
-                        {number}
+                        {totalBadges}
                     </span>
                     개
                 </span>
 
-                <button className="change">뱃지 수정</button>
-                <button className="delete">뱃지 삭제</button>
+                <button type="button" className="change">
+                    뱃지 수정
+                </button>
+                <button type="button" className="delete">
+                    뱃지 삭제
+                </button>
             </div>
 
             <hr

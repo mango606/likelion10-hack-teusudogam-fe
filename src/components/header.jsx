@@ -2,6 +2,7 @@ import { css, useTheme } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import { Link } from 'react-router-dom';
 
 import StreamerIcon from './streamer-icon';
 import UserProfileImage from './user-profile-image';
@@ -22,8 +23,8 @@ function HeaderLink({ link, children, onClick }) {
                 position: relative;
             `}
         >
-            <a
-                href={link}
+            <Link
+                to={link}
                 css={css`
                     font-size: 1.1rem;
                     font-weight: bold;
@@ -36,7 +37,7 @@ function HeaderLink({ link, children, onClick }) {
                 `}
             >
                 {children}
-            </a>
+            </Link>
             {onClick ? (
                 <div
                     css={css`
