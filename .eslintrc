@@ -16,6 +16,9 @@
         "plugin:prettier/recommended"
     ],
     "rules": {
+        // Prop spreading 허용
+        "react/jsx-props-no-spreading": "off",
+        // Import rules
         "no-unused-vars": "off",
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": [
