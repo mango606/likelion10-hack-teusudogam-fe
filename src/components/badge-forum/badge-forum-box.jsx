@@ -1,54 +1,25 @@
 import { css, useTheme } from '@emotion/react';
 import React, { useState } from 'react';
+import useSWR from 'swr';
 
 import BadgeEvaluationBox from './badge-evaluation-box';
 
-import tempBadgeImage from 'assets/mock/streamer/nokduro.png';
 import Title from 'components/title';
+import useFetcher from 'hooks/use-fetcher';
 
 export default function BadgeForumBox() {
     const theme = useTheme();
 
-    const evaluations = [
-        {
-            id: 1,
-            image: tempBadgeImage,
-            name: '화난 왁두',
-            condition: '우왁굳 화내게 하기',
-            like: 320,
-            dislike: 20,
-            comment: 4,
-        },
-        {
-            id: 2,
-            image: tempBadgeImage,
-            name: '웃는 왁두',
-            condition: '우왁굳 웃기기',
-            like: 120,
-            dislike: 10,
-            comment: 2,
-        },
-        {
-            id: 3,
-            image: tempBadgeImage,
-            name: '못생 왁두',
-            condition: '우왁 못생겼어',
-            like: 5,
-            dislike: 20,
-            comment: 1,
-        },
-        {
-            id: 4,
-            image: tempBadgeImage,
-            name: '잘생 왁두',
-            condition: '우왁 잘생겼어',
-            like: 50,
-            dislike: 10,
-            comment: 5,
-        },
-    ];
+    const badges = useSWR(
+        '/badge/findAll',
+        useFetcher({
+            page: 1,
+            size: 20,
+        }),
+    );
 
-    const [currentEvaluation, setCurrentEvaluation] = useState(null);
+    const [currentBadge, setCurrentBadge] = useState(null);
+    console.log(badges.data?.[0][0]);
 
     return (
         <div>
@@ -76,24 +47,26 @@ export default function BadgeForumBox() {
                     margin: 0 auto;
                 `}
             >
-                {evaluations.map((evaluation) => (
-                    <BadgeEvaluationBox
-                        onClick={() => {
-                            setCurrentEvaluation(evaluation);
-                        }}
-                        key={`eval-${evaluation.id}`}
-                        name={evaluation.name}
-                        condition={evaluation.condition}
-                        image={evaluation.image}
-                        like={evaluation.like}
-                        dislike={evaluation.dislike}
-                        comment={evaluation.comment}
-                        enabled={
-                            currentEvaluation !== null &&
-                            evaluation.id === currentEvaluation.id
-                        }
-                    />
-                ))}
+                {badges.data?.[0] &&
+                    badges.data[0].map((badge) => (
+                        <BadgeEvaluationBox
+                            onClick={() => {
+                                setCurrentBadge(badge);
+                            }}
+                            key={`badge-${badge.id}`}
+                            name={badge.name}
+                            condition={badge.condition}
+                            description={badge.desc}
+                            image={badge.image}
+                            like={badge.like}
+                            dislike={badge.unlike}
+                            comment={badge.comment}
+                            enabled={
+                                currentBadge !== null &&
+                                badge.id === currentBadge.id
+                            }
+                        />
+                    ))}
             </div>
         </div>
     );

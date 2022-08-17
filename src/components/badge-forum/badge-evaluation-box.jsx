@@ -12,6 +12,7 @@ export default function BadgeEvaluationBox({
     onClick,
     image,
     name,
+    description,
     condition,
     like,
     dislike,
@@ -142,7 +143,7 @@ export default function BadgeEvaluationBox({
                     //margin-bottom: 5px;
                 `}
             >
-                달성 조건
+                {condition}
             </div>
             <div
                 css={css`
@@ -158,7 +159,7 @@ export default function BadgeEvaluationBox({
                     height: auto;
                 `}
             >
-                {condition}
+                {description}
             </div>
             <div
                 css={css`
@@ -216,21 +217,17 @@ export default function BadgeEvaluationBox({
 
 BadgeEvaluationBox.propTypes = {
     onClick: PropTypes.func,
-    name: PropTypes.string,
-    condition: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    condition: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    like: PropTypes.number,
-    dislike: PropTypes.number,
-    comment: PropTypes.number,
+    like: PropTypes.number.isRequired,
+    dislike: PropTypes.number.isRequired,
+    comment: PropTypes.number.isRequired,
     enabled: PropTypes.bool,
 };
 
 BadgeEvaluationBox.defaultProps = {
     onClick: undefined,
-    name: 'Default Name',
-    condition: 'Default Condition',
-    like: 0,
-    dislike: 0,
-    comment: 0,
-    enabled: undefined,
+    enabled: false,
 };

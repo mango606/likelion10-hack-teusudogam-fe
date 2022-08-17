@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
-import React, { useEffect, useMemo } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useCallback, useEffect, useMemo } from 'react';
 
 const { createContext } = require('react');
 
@@ -9,6 +9,10 @@ export const AuthorizationContext = createContext();
 function getSavedToken() {
     if (typeof window === 'undefined') return undefined;
     return JSON.parse(window.localStorage.getItem('auth/token'));
+}
+
+function resetToken() {
+    window.localStorage.removeItem('auth/token');
 }
 
 function saveToken(token) {
@@ -21,6 +25,7 @@ export function AuthorizationProvider({ children }) {
     }, []);
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     const token = useMemo(() => {
         const query = new URLSearchParams(location.search);
@@ -34,8 +39,18 @@ export function AuthorizationProvider({ children }) {
         }
     }, [token]);
 
+    const resetTokenAndRefresh = useCallback(() => {
+        resetToken();
+        navigate(0);
+    }, [navigate]);
+
     return (
-        <AuthorizationContext.Provider value={token}>
+        <AuthorizationContext.Provider
+            value={useMemo(
+                () => ({ resetTokenAndRefresh, token }),
+                [resetTokenAndRefresh, token],
+            )}
+        >
             {children}
         </AuthorizationContext.Provider>
     );

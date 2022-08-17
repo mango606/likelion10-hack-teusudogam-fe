@@ -5,7 +5,7 @@ import { AuthorizationContext } from 'contexts/authorization-context';
 import createApiUrl from 'utils/create-api-url';
 
 export default function useAxios() {
-    const token = useContext(AuthorizationContext);
+    const { token } = useContext(AuthorizationContext);
 
     return useMemo(
         () =>
