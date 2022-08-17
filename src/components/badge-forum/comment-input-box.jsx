@@ -41,7 +41,7 @@ export default function CommentInputBox() {
                         padding: 10px;
 
                         width: 650px;
-                        height: 70px;
+                        resize: none;
                     `}
                     placeholder="코멘트 작성하기"
                 />

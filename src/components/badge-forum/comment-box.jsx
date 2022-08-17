@@ -46,12 +46,10 @@ export default function CommentBox({
         <div
             css={css`
                 display: grid;
-                grid-template-columns: 90px auto;
+                grid-template-columns: auto 1fr;
                 grid-template-rows: auto auto auto auto;
                 align-items: center;
-                column-gap: 20px;
-
-                padding: 8px;
+                column-gap: 16px;
             `}
         >
             <UserProfileImage
@@ -61,7 +59,7 @@ export default function CommentBox({
                     grid-row-end: 4;
                 `}
                 image={image}
-                size={90}
+                size={60}
             />
             <div
                 // 닉네임 및 칭호
@@ -79,7 +77,7 @@ export default function CommentBox({
                 <div
                     // 닉네임
                     css={css`
-                        font-size: 1.3rem;
+                        font-size: 1rem;
                         font-weight: bold;
                         color: ${theme.colors.white};
                     `}
@@ -102,7 +100,7 @@ export default function CommentBox({
                     grid-column: 2;
                     grid-row: 2;
 
-                    font-size: 1rem;
+                    font-size: 0.9rem;
                     font-weight: bold;
                     color: ${theme.colors.white};
 
@@ -127,14 +125,13 @@ export default function CommentBox({
                     like={like}
                     dislike={dislike}
                     comment={comment}
-                    size={27}
+                    size={16}
                     css={css``}
                 />
                 <button
                     type="button"
                     onClick={() => {
                         setShowReply(!showReply);
-                        console.log(showReply);
                     }}
                     css={css`
                         cursor: pointer;
@@ -142,7 +139,7 @@ export default function CommentBox({
                         background-color: transparent;
 
                         border: 0;
-                        font-size: 0.9rem;
+                        font-size: 1rem;
                         font-weight: bold;
 
                         :hover {

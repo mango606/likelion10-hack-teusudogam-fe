@@ -1,4 +1,4 @@
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -26,8 +26,6 @@ const Num = styled.div`
 `;
 
 export default function ReputationTable({ like, dislike, comment, size }) {
-    const theme = useTheme();
-
     return (
         <div
             css={css`
@@ -57,7 +55,7 @@ export default function ReputationTable({ like, dislike, comment, size }) {
             </Button>
             <Num
                 css={css`
-                    font-size: ${(size - 10) / 20}rem;
+                    font-size: ${size}px;
                 `}
             >
                 {like}
@@ -78,7 +76,7 @@ export default function ReputationTable({ like, dislike, comment, size }) {
             </Button>
             <Num
                 css={css`
-                    font-size: ${(size - 10) / 20}rem;
+                    font-size: ${size}px;
                 `}
             >
                 {dislike}
@@ -95,7 +93,7 @@ export default function ReputationTable({ like, dislike, comment, size }) {
             </Button>
             <Num
                 css={css`
-                    font-size: ${(size - 10) / 20}rem;
+                    font-size: ${size}px;
                 `}
             >
                 {comment}

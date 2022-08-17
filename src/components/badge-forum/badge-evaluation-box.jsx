@@ -186,7 +186,7 @@ export default function BadgeEvaluationBox({
 
                         display: flex;
                         flex-direction: column;
-                        row-gap: 10px;
+                        row-gap: 20px;
 
                         margin: 20px auto 0px auto;
 
@@ -196,7 +196,6 @@ export default function BadgeEvaluationBox({
                     `}
                 >
                     <CommentInputBox />
-                    <hr width="90%" color={theme.colors.white} />
                     {comments.map((com) => (
                         <CommentBox
                             key={`com-${com.id}`}
