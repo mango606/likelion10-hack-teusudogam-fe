@@ -1,12 +1,17 @@
 import { css, useTheme } from '@emotion/react';
+import PropTypes from 'prop-types';
 import React from 'react';
+import { useForm } from 'react-hook-form';
 
 import tempUserImage from '../../assets/mock/cat.jpeg';
 
 import UserProfileImage from 'components/user-profile-image';
+import useAxios from 'hooks/use-axios';
 
-export default function CommentInputBox() {
+export default function CommentInputBox({ id }) {
     const theme = useTheme();
+    const axios = useAxios();
+    const { register, handleSubmit } = useForm();
 
     return (
         <div
@@ -25,12 +30,22 @@ export default function CommentInputBox() {
             <UserProfileImage image={tempUserImage} size={90} />
             <form
                 // 코멘트 작성 폼
+                onSubmit={handleSubmit((data) => {
+                    axios
+                        .post(
+                            `https://api.teusubox.shop/comment?badge=${id}`,
+                            data,
+                        )
+                        .then(function (response) {
+                            console.log(response);
+                        });
+                })}
                 css={css`
                     display: flex;
                     column-gap: 20px;
                 `}
             >
-                <textarea
+                <input
                     // 입력부
                     css={css`
                         background-color: ${theme.colors.white};
@@ -44,6 +59,7 @@ export default function CommentInputBox() {
                         resize: none;
                     `}
                     placeholder="코멘트 작성하기"
+                    {...register('comment')}
                 />
                 <button
                     // 제출 부
@@ -67,3 +83,7 @@ export default function CommentInputBox() {
         </div>
     );
 }
+
+CommentInputBox.propTypes = {
+    id: PropTypes.number.isRequired,
+};

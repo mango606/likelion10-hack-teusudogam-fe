@@ -13,13 +13,13 @@ export default function BadgeForumBox() {
     const badges = useSWR(
         '/badge/findAll',
         useFetcher({
-            page: 1,
+            page: 0,
             size: 20,
         }),
     );
 
     const [currentBadge, setCurrentBadge] = useState(null);
-    console.log(badges.data?.[0][0]);
+    // console.log(badges.data?.[0][0]);
 
     return (
         <div>
@@ -54,10 +54,11 @@ export default function BadgeForumBox() {
                                 setCurrentBadge(badge);
                             }}
                             key={`badge-${badge.id}`}
+                            id={badge.id}
                             name={badge.name}
                             condition={badge.condition}
                             description={badge.desc}
-                            image={badge.image}
+                            image={badge.image.url}
                             like={badge.like}
                             dislike={badge.unlike}
                             comment={badge.comment}

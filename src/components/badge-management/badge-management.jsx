@@ -227,7 +227,23 @@ export default function BadgeManagement() {
             />
 
             <div>
-                <ol>
+                <ol
+                    css={css`
+                        display: grid;
+                        grid-template-columns: 5% 10% 20% 15% 25% 20%;
+                        justify-content: stretch;
+                        list-style-type: none;
+                        background-color: rgba(32, 29, 43, 1);
+                        text-align: center;
+                        border-radius: 10px;
+                        margin: 1% 0;
+                        padding: 1% 50px;
+                        width: 1000px;
+                        height: auto;
+                        color: white;
+                        font-size: 15px;
+                    `}
+                >
                     <input type="checkbox" />
                     <span style={styleInfo}>이미지</span>
                     <span style={styleInfo}>뱃지 이름</span>

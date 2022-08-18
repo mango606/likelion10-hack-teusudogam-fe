@@ -10,6 +10,7 @@ import ReputationTable from './reputation-table';
 
 export default function BadgeEvaluationBox({
     onClick,
+    id,
     image,
     name,
     description,
@@ -21,28 +22,7 @@ export default function BadgeEvaluationBox({
 }) {
     const theme = useTheme();
 
-    const comments = [
-        {
-            image: tempImage,
-            nickName: '트수1',
-            title: '왁두수집가',
-            contents: '적당한 조건의 칭호 같아요! Rank 기원!',
-            like: 17,
-            dislike: 3,
-            comment: 2,
-            id: 1,
-        },
-        {
-            image: tempImage,
-            nickName: '트수2',
-            title: '녹두전장인',
-            contents: '이건 못참지!',
-            like: 17,
-            dislike: 3,
-            comment: 2,
-            id: 2,
-        },
-    ];
+    const comments = [];
 
     return (
         <button
@@ -195,10 +175,11 @@ export default function BadgeEvaluationBox({
                         width: 95%;
                     `}
                 >
-                    <CommentInputBox />
+                    <CommentInputBox id={id} />
                     {comments.map((com) => (
                         <CommentBox
                             key={`com-${com.id}`}
+                            id={id}
                             image={tempImage}
                             nickName={com.nickName}
                             title={com.title}
@@ -216,6 +197,7 @@ export default function BadgeEvaluationBox({
 
 BadgeEvaluationBox.propTypes = {
     onClick: PropTypes.func,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     condition: PropTypes.string.isRequired,

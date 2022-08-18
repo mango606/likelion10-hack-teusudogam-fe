@@ -1,6 +1,7 @@
 import { css, useTheme } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import useSWR from 'swr';
 
 import tempImage from '../../assets/mock/dog.jpg';
 
@@ -8,9 +9,11 @@ import ReplyBox from './reply-box';
 import ReputationTable from './reputation-table';
 
 import UserProfileImage from 'components/user-profile-image';
+import useFetcher from 'hooks/use-fetcher';
 
 export default function CommentBox({
     image,
+    id,
     nickName,
     title,
     contents,
@@ -18,29 +21,11 @@ export default function CommentBox({
     dislike,
     comment,
 }) {
-    const replies = [
-        {
-            image: tempImage,
-            replyNickName: '답트수1',
-            replyTitle: '감자국명예시민',
-            replyContents: 'ㅇㅈ합니다.',
-        },
-        {
-            image: tempImage,
-            replyNickName: '답트수2',
-            replyTitle: '이세돌팬',
-            replyContents: '이건 못참지~',
-        },
-        {
-            image: tempImage,
-            replyNickName: '답트수3',
-            replyTitle: '로렘입숨',
-            replyContents:
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        },
-    ];
+    const replies = useSWR(`/badge/${id}`, useFetcher({}));
     const theme = useTheme();
     const [showReply, setShowReply] = useState(false);
+
+    console.log(replies.data);
 
     return (
         <div
@@ -180,6 +165,7 @@ export default function CommentBox({
 }
 
 CommentBox.propTypes = {
+    id: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
     nickName: PropTypes.string,
     title: PropTypes.string,

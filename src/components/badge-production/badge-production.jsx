@@ -108,7 +108,7 @@ export default function BadgeProduction() {
                     data.append(key, value);
                 }
             });
-
+            console.log(data);
             axios.post('/badge', data);
         },
         [axios],
