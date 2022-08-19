@@ -251,9 +251,12 @@ export default function Header() {
                         onClick={() => {
                             if (myInformation === null || token === null) {
                                 if (typeof window !== 'undefined') {
-                                    window.location.href = createApiUrl(
-                                        '/oauth/twitch-local',
-                                    );
+                                    const loginPath =
+                                        process.env.NODE_ENV === 'development'
+                                            ? '/oauth/twitch-local'
+                                            : '/oauth/twitch';
+                                    window.location.href =
+                                        createApiUrl(loginPath);
                                 }
                             } else {
                                 setShowingMenu(!showingMenu);
