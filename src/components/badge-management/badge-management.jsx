@@ -7,43 +7,6 @@ import Glass from 'assets/mock/management/glass.png';
 import tempImage from 'assets/mock/management/wakdu1.png';
 import Title from 'components/title';
 
-// const items = () => {
-//     return (
-//         <div>
-//             <ol
-//                 css={css`
-//                     display: grid;
-//                     grid-template-columns: 5% 10% 20% 15% 25% 20%;
-//                     justify-content: stretch;
-
-//                     list-style-type: none;
-
-//                     background-color: rgba(32, 29, 43, 1);
-
-//                     text-align: center;
-
-//                     border-radius: 10px;
-//                     margin: 1% 0;
-//                     padding: 1% 50px;
-//                     width: 1000px;
-//                     height: auto;
-//                     color: white;
-//                     font-size: 15px;
-//                 `}
-//             >
-//                 <input type="checkbox" width="15px" height="15px" />
-//                 <span style={styleInfo}>
-//                     <img src={data.route} alt="" style={{ maxWidth: '80px' }} />
-//                 </span>
-//                 <span style={styleInfo}>{data.name}</span>
-//                 <span style={styleInfo}>{data.tag}</span>
-//                 <span style={styleInfo}>{data.condition}</span>
-//                 <span style={styleInfo}>{data.rank}</span>
-//             </ol>
-//         </div>
-//     );
-// });
-
 export default function BadgeManagement() {
     const theme = useTheme();
     const [searchType, setSearchType] = useState();
@@ -136,7 +99,6 @@ export default function BadgeManagement() {
                             id="search-input"
                             type="text"
                             placeholder=" 뱃지 이름 또는 태그 입력"
-                            onChange={(event) => {}}
                             css={css`
                                 /* 뱃지 이름 또는 태그 입력 */
                                 background-color: rgba(22, 20, 30, 1);
