@@ -1,4 +1,5 @@
 import { css, useTheme } from '@emotion/react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
@@ -7,11 +8,8 @@ import ReputationTable from './reputation-table';
 import UserProfileImage from 'components/user-profile-image';
 
 export default function CommentBox({ comment }) {
-    // const replies = useSWR(`/badge/${id}`, useFetcher({}));
     const theme = useTheme();
     const [showReply, setShowReply] = useState(false);
-
-    // console.log(replies.data);
 
     return (
         <div
@@ -33,13 +31,12 @@ export default function CommentBox({ comment }) {
                 size={60}
             />
             <div
-                // 닉네임 및 칭호
                 css={css`
                     grid-column: 2;
                     grid-row: 1;
 
                     display: flex;
-                    align-items: flex-end;
+                    align-items: center;
                     column-gap: 5px;
 
                     margin-bottom: 5px;
@@ -55,14 +52,22 @@ export default function CommentBox({ comment }) {
                 >
                     {comment.author.userName}
                 </div>
-                <div
+                {/* <div
                     // 칭호
                     css={css`
                         font-size: 0.8rem;
                         color: ${theme.colors.white};
                     `}
                 >
-                    {comment.title}
+                    {comment.author.userName}
+                </div> */}
+                <div
+                    css={css`
+                        font-size: 0.7rem;
+                        color: ${theme.colors.gray1};
+                    `}
+                >
+                    {moment(comment.createdAt).fromNow()}
                 </div>
             </div>
             <div
@@ -99,51 +104,7 @@ export default function CommentBox({ comment }) {
                     size={16}
                     css={css``}
                 />
-                <button
-                    type="button"
-                    onClick={() => {
-                        setShowReply(!showReply);
-                    }}
-                    css={css`
-                        cursor: pointer;
-                        color: rgba(255, 255, 255, 0.5);
-                        background-color: transparent;
-
-                        border: 0;
-                        font-size: 1rem;
-                        font-weight: bold;
-
-                        :hover {
-                            color: rgba(255, 255, 255, 0.9);
-                        }
-                    `}
-                >
-                    답글
-                </button>
             </div>
-            {showReply && (
-                <div
-                    // 답글 컨테이너
-                    css={css`
-                        grid-column-start: 1;
-                        grid-column-end: 3;
-                        grid-row: 4;
-
-                        margin: 0px auto;
-
-                        width: 100%;
-                    `}
-                >
-                    {/* {replies.map((reply) => (
-                        <ReplyBox
-                            image={tempImage}
-                            nickName={reply.replyNickName}
-                            title={reply.replyTitle}
-                            contents={reply.replyContents}
-                        />
-                    ))} */}
-                </div>
-            )}
         </div>
     );
 }

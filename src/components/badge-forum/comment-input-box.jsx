@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import tempUserImage from '../../assets/mock/cat.jpeg';
-
 import UserProfileImage from 'components/user-profile-image';
+import { useMyInformation } from 'contexts/my-information-context';
 import useAxios from 'hooks/use-axios';
 
 export default function CommentInputBox({ id, onSubmit }) {
     const theme = useTheme();
     const axios = useAxios();
     const { register, handleSubmit } = useForm();
+    const myInformation = useMyInformation();
 
     const [editingText, setEditingText] = useState('');
     const [submitting, setSubmitting] = useState(false);
@@ -26,7 +26,7 @@ export default function CommentInputBox({ id, onSubmit }) {
                 width: 100%;
             `}
         >
-            <UserProfileImage image={tempUserImage} size={60} />
+            <UserProfileImage image={myInformation.profileImage} size={60} />
             <form
                 // 코멘트 작성 폼
                 onSubmit={handleSubmit((data) => {

@@ -64,14 +64,12 @@ export default function Badge({ onClick, badge, size }) {
 }
 
 Badge.propTypes = {
-    image: PropTypes.string.isRequired,
     size: PropTypes.number,
-    badgeName: PropTypes.string,
     onClick: PropTypes.func,
+    badge: PropTypes.object.isRequired,
 };
 
 Badge.defaultProps = {
     size: undefined,
-    badgeName: 'Default Badge',
     onClick: undefined,
 };

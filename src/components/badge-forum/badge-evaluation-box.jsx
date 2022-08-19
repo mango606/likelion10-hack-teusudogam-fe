@@ -15,7 +15,7 @@ import useFetcher from 'hooks/use-fetcher';
 export default function BadgeEvaluationBox({ onClick, badge, enabled }) {
     const theme = useTheme();
 
-    const detailedBadge = useSWR(`/badge/${badge.id}`, useFetcher(), {
+    const comments = useSWR(`/badge/${badge.id}/comment`, useFetcher(), {
         isPaused: () => enabled === false,
     });
 
@@ -23,9 +23,9 @@ export default function BadgeEvaluationBox({ onClick, badge, enabled }) {
 
     useEffect(() => {
         if (previousEnabled === false && enabled === true) {
-            detailedBadge.mutate();
+            comments.mutate();
         }
-    }, [detailedBadge, previousEnabled, enabled]);
+    }, [comments, previousEnabled, enabled]);
 
     return (
         <div
@@ -164,11 +164,11 @@ export default function BadgeEvaluationBox({ onClick, badge, enabled }) {
                     <CommentInputBox
                         id={badge.id}
                         onSubmit={() => {
-                            detailedBadge.mutate();
+                            comments.mutate();
                         }}
                     />
-                    {detailedBadge.data !== undefined ? (
-                        detailedBadge.data.comments.map((comment) => (
+                    {comments.data !== undefined ? (
+                        comments.data.map((comment) => (
                             <CommentBox
                                 key={`comment-${comment.id}`}
                                 comment={comment}

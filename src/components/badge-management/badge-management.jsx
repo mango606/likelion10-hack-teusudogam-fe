@@ -96,7 +96,6 @@ export default function BadgeManagement() {
                             id="search-input"
                             type="text"
                             placeholder=" 뱃지 이름 또는 태그 입력"
-                            onChange={(event) => {}}
                             css={css`
                                 /* 뱃지 이름 또는 태그 입력 */
                                 background-color: rgba(22, 20, 30, 1);

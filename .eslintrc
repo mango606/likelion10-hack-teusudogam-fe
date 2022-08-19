@@ -21,6 +21,7 @@
         "react/jsx-props-no-spreading": "off",
         // Import rules
         "no-unused-vars": "off",
+        "no-nested-ternary": "off",
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": [
             "warn",

@@ -34,7 +34,7 @@ export function AuthorizationProvider({ children }) {
     }, [location.search, savedToken]);
 
     useEffect(() => {
-        if (token !== null && token !== undefined) {
+        if (token !== null) {
             saveToken(token);
         }
     }, [token]);

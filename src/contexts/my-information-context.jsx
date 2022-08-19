@@ -14,7 +14,7 @@ export function MyInformationProvider({ children }) {
     const axios = useAxios();
 
     const { token, resetTokenAndRefresh } = useContext(AuthorizationContext);
-    const [myInformation, setMyInformation] = useState();
+    const [myInformation, setMyInformation] = useState(null);
 
     useEffect(() => {
         if (token === null) return;

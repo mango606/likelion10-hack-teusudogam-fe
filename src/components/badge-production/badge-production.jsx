@@ -131,8 +131,6 @@ export default function BadgeProduction() {
         [axios],
     );
 
-    console.log(imageUrl);
-
     return (
         <div
             // 전체 컨테이너 박스

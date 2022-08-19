@@ -1,8 +1,9 @@
 import { css, useTheme } from '@emotion/react';
 import PropTypes from 'prop-types';
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import { Link } from 'react-router-dom';
+import { MoonLoader } from 'react-spinners';
 import { useClickAway } from 'react-use';
 
 import StreamerIcon from './streamer-icon';
@@ -14,6 +15,7 @@ import logoImage from 'assets/logo-white.svg';
 import streamer2Image from 'assets/mock/streamer/nokduro.png';
 import streamer1Image from 'assets/mock/streamer/pung.jpeg';
 import streamer0Image from 'assets/mock/streamer/wakgood.jpeg';
+import { AuthorizationContext } from 'contexts/authorization-context';
 import { useMyInformation } from 'contexts/my-information-context';
 import createApiUrl from 'utils/create-api-url';
 
@@ -70,6 +72,7 @@ HeaderLink.defaultProps = {
 export default function Header() {
     const theme = useTheme();
 
+    const { token } = useContext(AuthorizationContext);
     const myInformation = useMyInformation();
 
     const [showingMenu, setShowingMenu] = useState(false);
@@ -160,7 +163,7 @@ export default function Header() {
                     background-color: ${theme.colors.primary1};
                 `}
             >
-                {myInformation !== undefined ? (
+                {myInformation !== null ? (
                     <div
                         // 사용자 정보
                         css={css`
@@ -213,7 +216,7 @@ export default function Header() {
                             >
                                 {myInformation.userName}
                             </div>
-                            <div
+                            {/* <div
                                 // 칭호
                                 css={css`
                                     font-weight: bold;
@@ -223,8 +226,18 @@ export default function Header() {
                                 `}
                             >
                                 칭호없음
-                            </div>
+                            </div> */}
                         </div>
+                    </div>
+                ) : token !== null ? (
+                    <div>
+                        <MoonLoader
+                            size={20}
+                            color="#ffffff"
+                            css={css`
+                                margin-right: 10px;
+                            `}
+                        />
                     </div>
                 ) : undefined}
 
@@ -236,7 +249,7 @@ export default function Header() {
                 >
                     <UserProfileImage
                         onClick={() => {
-                            if (myInformation === undefined) {
+                            if (myInformation === null || token === null) {
                                 if (typeof window !== 'undefined') {
                                     window.location.href = createApiUrl(
                                         '/oauth/twitch-local',
@@ -247,7 +260,7 @@ export default function Header() {
                             }
                         }}
                         image={
-                            myInformation !== undefined
+                            myInformation !== null
                                 ? myInformation.profileImage
                                 : emptyProfileImageUrl
                         }
