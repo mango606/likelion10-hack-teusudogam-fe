@@ -104,42 +104,7 @@ export default function CommentBox({ comment }) {
                     size={16}
                     css={css``}
                 />
-                <button
-                    type="button"
-                    onClick={() => {
-                        setShowReply(!showReply);
-                    }}
-                    css={css`
-                        cursor: pointer;
-                        color: rgba(255, 255, 255, 0.5);
-                        background-color: transparent;
-
-                        border: 0;
-                        font-size: 1rem;
-                        font-weight: bold;
-
-                        :hover {
-                            color: rgba(255, 255, 255, 0.9);
-                        }
-                    `}
-                >
-                    답글
-                </button>
             </div>
-            {showReply && (
-                <div
-                    // 답글 컨테이너
-                    css={css`
-                        grid-column-start: 1;
-                        grid-column-end: 3;
-                        grid-row: 4;
-
-                        margin: 0px auto;
-
-                        width: 100%;
-                    `}
-                />
-            )}
         </div>
     );
 }
