@@ -254,6 +254,7 @@ export default function Header() {
                     `}
                 >
                     <HeaderLink link="/badges">전체 뱃지</HeaderLink>
+                    <HeaderLink link="/streamers">내 스트리머</HeaderLink>
                     <HeaderLink link="/badge-control">뱃지 관리</HeaderLink>
                 </div>
             </div>
