@@ -1,5 +1,5 @@
 import { css, useTheme } from '@emotion/react';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import useSWR from 'swr';
 
 import BadgeEvaluationBox from './badge-evaluation-box';
@@ -18,7 +18,25 @@ export default function BadgeForumBox() {
         }),
     );
 
-    const [currentBadge, setCurrentBadge] = useState(null);
+    const [enabledBadgeIds, setEnabledBadgeIds] = useState([]);
+
+    const toggleBadge = useCallback(
+        (badge) => {
+            // 켜져있으면 끄고
+            if (enabledBadgeIds.includes(badge.id)) {
+                setEnabledBadgeIds(
+                    enabledBadgeIds.filter((element) => {
+                        return element !== badge.id;
+                    }),
+                );
+            } else {
+                // 꺼져있으면 키고
+                setEnabledBadgeIds([...enabledBadgeIds, badge.id]);
+            }
+        },
+        [enabledBadgeIds],
+    );
+
     // console.log(badges.data?.[0][0]);
 
     return (
@@ -51,21 +69,11 @@ export default function BadgeForumBox() {
                     badges.data[0].map((badge) => (
                         <BadgeEvaluationBox
                             onClick={() => {
-                                setCurrentBadge(badge);
+                                toggleBadge(badge);
                             }}
                             key={`badge-${badge.id}`}
-                            id={badge.id}
-                            name={badge.name}
-                            condition={badge.condition}
-                            description={badge.desc}
-                            image={badge.image.url}
-                            like={badge.like}
-                            dislike={badge.unlike}
-                            comment={badge.comment}
-                            enabled={
-                                currentBadge !== null &&
-                                badge.id === currentBadge.id
-                            }
+                            badge={badge}
+                            enabled={enabledBadgeIds.includes(badge.id)}
                         />
                     ))}
             </div>

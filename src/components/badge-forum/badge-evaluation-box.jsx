@@ -1,160 +1,158 @@
 import { css, useTheme } from '@emotion/react';
 import PropTypes from 'prop-types';
-import React from 'react';
-
-import tempImage from '../../assets/mock/cat.jpeg';
+import React, { useEffect } from 'react';
+import { MoonLoader } from 'react-spinners';
+import { usePrevious } from 'react-use';
+import useSWR from 'swr';
 
 import CommentBox from './comment-box';
 import CommentInputBox from './comment-input-box';
 import ReputationTable from './reputation-table';
 
-export default function BadgeEvaluationBox({
-    onClick,
-    id,
-    image,
-    name,
-    description,
-    condition,
-    like,
-    dislike,
-    comment,
-    enabled,
-}) {
+import useFetcher from 'hooks/use-fetcher';
+
+export default function BadgeEvaluationBox({ onClick, badge, enabled }) {
     const theme = useTheme();
 
-    const comments = [];
+    const detailedBadge = useSWR(`/badge/${badge.id}`, useFetcher(), {
+        isPaused: () => enabled === false,
+    });
+
+    const previousEnabled = usePrevious(enabled);
+
+    useEffect(() => {
+        if (previousEnabled === false && enabled === true) {
+            detailedBadge.mutate();
+        }
+    }, [detailedBadge, previousEnabled, enabled]);
 
     return (
-        <button
-            type="button"
-            onClick={onClick}
+        <div
             css={css`
                 background-color: rgba(0, 0, 0, 0.3);
-                width: 1000px;
-                height: auto;
-
-                display: grid;
-                grid-template-columns: 100px 500px 360px;
-                grid-template-rows: auto auto auto auto;
-
-                align-items: center;
-                justify-content: center;
-
-                column-gap: 10px;
 
                 border-radius: 8px;
-                border-width: 0;
 
-                padding: 8px;
-
-                ${onClick !== undefined &&
-                css`
-                    cursor: pointer;
-                    :hover {
-                        //background-color: red;
-                    }
-                `}
+                padding: 16px;
+                width: 100%;
             `}
         >
-            <div
-                // 뱃지 이미지
+            <button
+                type="button"
+                onClick={onClick}
                 css={css`
-                    grid-column: 1;
-                    grid-row-start: 1;
-                    grid-row-end: 4;
-
-                    color: ${theme.colors.primary1};
-                    background-color: ${theme.colors.white};
-                    padding: 0;
                     border: 0;
-                    border-radius: 8px;
-                    display: flex;
+                    padding: 0;
+                    display: block;
+                    cursor: pointer;
+                    display: grid;
+                    grid-template-columns: 100px 1fr auto;
+                    column-gap: 10px;
                     align-items: center;
                     justify-content: center;
-                    overflow: hidden;
-
-                    width: auto;
-                    height: auto;
+                    background: none;
+                    width: 100%;
                 `}
             >
-                <img
-                    src={image}
-                    alt={name}
+                <div
+                    // 뱃지 이미지
                     css={css`
-                        object-fit: cover;
-                        width: 100%;
-                        height: 100%;
+                        grid-column: 1;
+                        grid-row-start: 1;
+                        grid-row-end: 4;
+
+                        color: ${theme.colors.primary1};
+                        background-color: ${theme.colors.white};
+                        padding: 0;
+                        border: 0;
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
+
+                        width: auto;
+                        height: auto;
                     `}
-                />
-            </div>
-            <div
-                // 뱃지 이름
-                css={css`
-                    grid-column: 2;
-                    grid-row: 1;
+                >
+                    <img
+                        src={badge.image.url}
+                        alt={badge.name}
+                        css={css`
+                            object-fit: cover;
+                            width: 100px;
+                            height: 100px;
+                        `}
+                    />
+                </div>
+                <div
+                    // 뱃지 이름
+                    css={css`
+                        grid-column: 2;
+                        grid-row: 1;
 
-                    width: auto;
-                    height: auto;
+                        width: auto;
+                        height: auto;
 
-                    font-size: 1.5rem;
-                    color: ${theme.colors.white};
-                    font-weight: bold;
-                    text-align: left;
+                        font-size: 1.5rem;
+                        color: ${theme.colors.white};
+                        font-weight: bold;
+                        text-align: left;
 
-                    //margin-bottom: 7px;
-                `}
-            >
-                {name}
-            </div>
-            <div
-                // 달성 조건
-                css={css`
-                    grid-column: 2;
-                    grid-row: 2;
+                        //margin-bottom: 7px;
+                    `}
+                >
+                    {badge.name}
+                </div>
+                <div
+                    // 달성 조건
+                    css={css`
+                        grid-column: 2;
+                        grid-row: 2;
 
-                    font-size: 1.2rem;
-                    color: ${theme.colors.white};
-                    font-weight: bold;
-                    text-align: left;
+                        font-size: 1.2rem;
+                        color: ${theme.colors.white};
+                        font-weight: bold;
+                        text-align: left;
 
-                    width: auto;
-                    height: auto;
+                        width: auto;
+                        height: auto;
 
-                    //margin-bottom: 5px;
-                `}
-            >
-                {condition}
-            </div>
-            <div
-                css={css`
-                    grid-column: 2;
-                    grid-row: 3;
+                        //margin-bottom: 5px;
+                    `}
+                >
+                    {badge.condition}
+                </div>
+                <div
+                    css={css`
+                        grid-column: 2;
+                        grid-row: 3;
 
-                    font-size: 1rem;
-                    color: ${theme.colors.white};
-                    font-weight: bold;
-                    text-align: left;
+                        font-size: 1rem;
+                        color: ${theme.colors.white};
+                        font-weight: bold;
+                        text-align: left;
 
-                    width: auto;
-                    height: auto;
-                `}
-            >
-                {description}
-            </div>
-            <div
-                css={css`
-                    grid-column: 3;
-                    grid-row-start: 1;
-                    grid-row-end: 4;
-                `}
-            >
-                <ReputationTable
-                    like={like}
-                    dislike={dislike}
-                    comment={comment}
-                    size={50}
-                />
-            </div>
+                        width: auto;
+                        height: auto;
+                    `}
+                >
+                    {badge.description}
+                </div>
+                <div
+                    css={css`
+                        grid-column: 3;
+                        grid-row: 3;
+                    `}
+                >
+                    <ReputationTable
+                        like={badge.like}
+                        dislike={badge.dislike}
+                        comment={badge.comment}
+                        size={20}
+                    />
+                </div>
+            </button>
 
             {enabled === true && (
                 <div
@@ -169,42 +167,33 @@ export default function BadgeEvaluationBox({
                         row-gap: 20px;
 
                         margin: 20px auto 0px auto;
-
-                        height: auto;
-
-                        width: 95%;
                     `}
                 >
-                    <CommentInputBox id={id} />
-                    {comments.map((com) => (
-                        <CommentBox
-                            key={`com-${com.id}`}
-                            id={id}
-                            image={tempImage}
-                            nickName={com.nickName}
-                            title={com.title}
-                            contents={com.contents}
-                            like={com.like}
-                            dislike={com.dislike}
-                            comment={com.comment}
-                        />
-                    ))}
+                    <CommentInputBox
+                        id={badge.id}
+                        onSubmit={() => {
+                            detailedBadge.mutate();
+                        }}
+                    />
+                    {detailedBadge.data !== undefined ? (
+                        detailedBadge.data.comments.map((comment) => (
+                            <CommentBox
+                                key={`comment-${comment.id}`}
+                                comment={comment}
+                            />
+                        ))
+                    ) : (
+                        <MoonLoader color="#ffffff" />
+                    )}
                 </div>
             )}
-        </button>
+        </div>
     );
 }
 
 BadgeEvaluationBox.propTypes = {
     onClick: PropTypes.func,
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    condition: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    like: PropTypes.number.isRequired,
-    dislike: PropTypes.number.isRequired,
-    comment: PropTypes.number.isRequired,
+    badge: PropTypes.object.isRequired,
     enabled: PropTypes.bool,
 };
 

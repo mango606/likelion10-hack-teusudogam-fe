@@ -16,6 +16,7 @@
         "plugin:prettier/recommended"
     ],
     "rules": {
+        "react/forbid-prop-types": "off",
         // Prop spreading 허용
         "react/jsx-props-no-spreading": "off",
         // Import rules

@@ -113,5 +113,5 @@ ReputationTable.defaultProps = {
     like: 0,
     dislike: 0,
     comment: 0,
-    size: 40,
+    size: 20,
 };

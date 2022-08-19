@@ -10,7 +10,7 @@ export default function UserProfileImage({ image, size, className, onClick }) {
             css={css`
                 width: ${size}px;
                 height: ${size}px;
-                border-radius: 8px;
+                border-radius: 6px;
                 overflow: hidden;
 
                 border: 0;

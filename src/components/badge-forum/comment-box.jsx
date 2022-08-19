@@ -1,31 +1,17 @@
 import { css, useTheme } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import useSWR from 'swr';
 
-import tempImage from '../../assets/mock/dog.jpg';
-
-import ReplyBox from './reply-box';
 import ReputationTable from './reputation-table';
 
 import UserProfileImage from 'components/user-profile-image';
-import useFetcher from 'hooks/use-fetcher';
 
-export default function CommentBox({
-    image,
-    id,
-    nickName,
-    title,
-    contents,
-    like,
-    dislike,
-    comment,
-}) {
-    const replies = useSWR(`/badge/${id}`, useFetcher({}));
+export default function CommentBox({ comment }) {
+    // const replies = useSWR(`/badge/${id}`, useFetcher({}));
     const theme = useTheme();
     const [showReply, setShowReply] = useState(false);
 
-    console.log(replies.data);
+    // console.log(replies.data);
 
     return (
         <div
@@ -43,7 +29,7 @@ export default function CommentBox({
                     grid-row-start: 1;
                     grid-row-end: 4;
                 `}
-                image={image}
+                image={comment.author}
                 size={60}
             />
             <div
@@ -67,7 +53,7 @@ export default function CommentBox({
                         color: ${theme.colors.white};
                     `}
                 >
-                    {nickName}
+                    {comment.nickName}
                 </div>
                 <div
                     // 칭호
@@ -76,7 +62,7 @@ export default function CommentBox({
                         color: ${theme.colors.white};
                     `}
                 >
-                    {title}
+                    {comment.title}
                 </div>
             </div>
             <div
@@ -92,7 +78,7 @@ export default function CommentBox({
                     text-align: start;
                 `}
             >
-                {contents}
+                {comment.comment}
             </div>
             <div
                 // 평판 및 답글 및 신고
@@ -107,9 +93,9 @@ export default function CommentBox({
             >
                 <ReputationTable
                     // 평판
-                    like={like}
-                    dislike={dislike}
-                    comment={comment}
+                    like={comment.like}
+                    dislike={comment.dislike}
+                    comment={0} // TODO: 여기 채우기
                     size={16}
                     css={css``}
                 />
@@ -145,19 +131,17 @@ export default function CommentBox({
 
                         margin: 0px auto;
 
-                        //background-color: black;
-                        height: auto;
-                        width: 90%;
+                        width: 100%;
                     `}
                 >
-                    {replies.map((reply) => (
+                    {/* {replies.map((reply) => (
                         <ReplyBox
                             image={tempImage}
                             nickName={reply.replyNickName}
                             title={reply.replyTitle}
                             contents={reply.replyContents}
                         />
-                    ))}
+                    ))} */}
                 </div>
             )}
         </div>
@@ -165,21 +149,5 @@ export default function CommentBox({
 }
 
 CommentBox.propTypes = {
-    id: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    nickName: PropTypes.string,
-    title: PropTypes.string,
-    contents: PropTypes.string,
-    like: PropTypes.number,
-    dislike: PropTypes.number,
-    comment: PropTypes.number,
-};
-
-CommentBox.defaultProps = {
-    nickName: 'Default Nickname',
-    title: 'Defalut Title',
-    contents: 'Defalut Title',
-    like: 0,
-    dislike: 0,
-    comment: 0,
+    comment: PropTypes.object.isRequired,
 };
