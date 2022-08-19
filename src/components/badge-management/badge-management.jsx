@@ -1,57 +1,95 @@
 import { css, useTheme } from '@emotion/react';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
-import Information from './badge-information';
+import ManagementBox from './management-box';
 
 import Glass from 'assets/mock/management/glass.png';
+import tempImage from 'assets/mock/management/wakdu1.png';
 import Title from 'components/title';
 
-// 뱃지 리스트 스타일
-const styleInfo = {
-    padding: '1%',
-};
+// const items = () => {
+//     return (
+//         <div>
+//             <ol
+//                 css={css`
+//                     display: grid;
+//                     grid-template-columns: 5% 10% 20% 15% 25% 20%;
+//                     justify-content: stretch;
 
-const items = Information.map((data) => {
-    return (
-        <div>
-            <ol
-                css={css`
-                    display: grid;
-                    grid-template-columns: 5% 10% 20% 15% 25% 20%;
-                    justify-content: stretch;
+//                     list-style-type: none;
 
-                    list-style-type: none;
+//                     background-color: rgba(32, 29, 43, 1);
 
-                    background-color: rgba(32, 29, 43, 1);
+//                     text-align: center;
 
-                    text-align: center;
-
-                    border-radius: 10px;
-                    margin: 1% 0;
-                    padding: 1% 50px;
-                    width: 1000px;
-                    height: auto;
-                    color: white;
-                    font-size: 15px;
-                `}
-            >
-                <input type="checkbox" width="15px" height="15px" />
-                <span style={styleInfo}>
-                    <img src={data.route} alt="" style={{ maxWidth: '80px' }} />
-                </span>
-                <span style={styleInfo}>{data.name}</span>
-                <span style={styleInfo}>{data.tag}</span>
-                <span style={styleInfo}>{data.condition}</span>
-                <span style={styleInfo}>{data.rank}</span>
-            </ol>
-        </div>
-    );
-});
+//                     border-radius: 10px;
+//                     margin: 1% 0;
+//                     padding: 1% 50px;
+//                     width: 1000px;
+//                     height: auto;
+//                     color: white;
+//                     font-size: 15px;
+//                 `}
+//             >
+//                 <input type="checkbox" width="15px" height="15px" />
+//                 <span style={styleInfo}>
+//                     <img src={data.route} alt="" style={{ maxWidth: '80px' }} />
+//                 </span>
+//                 <span style={styleInfo}>{data.name}</span>
+//                 <span style={styleInfo}>{data.tag}</span>
+//                 <span style={styleInfo}>{data.condition}</span>
+//                 <span style={styleInfo}>{data.rank}</span>
+//             </ol>
+//         </div>
+//     );
+// });
 
 export default function BadgeManagement() {
     const theme = useTheme();
     const [searchType, setSearchType] = useState();
     const totalBadges = 0;
+
+    const testInformation = [
+        {
+            id: 1,
+            image: tempImage,
+            name: '웃는 왁두',
+            tag: '#우왁굳',
+            condition: '우왁굳 방송 1시간 이상 시청',
+            rank: true,
+        },
+        {
+            id: 2,
+            image: tempImage,
+            name: '우쭐대는 왁두',
+            tag: '#우왁굳',
+            condition: '우왁굳 방송 2시간 이상 시청',
+            rank: false,
+        },
+        {
+            id: 3,
+            image: tempImage,
+            name: '정색하는 왁두',
+            tag: '#우왁굳',
+            condition: '우왁굳 방송 10시간 이상 시청',
+            rank: true,
+        },
+        {
+            id: 4,
+            image: tempImage,
+            name: '화난 왁두',
+            tag: '#우왁굳',
+            condition: '우왁굳 방송 5시간 이상 시청',
+            rank: true,
+        },
+    ];
+
+    const spanStyle = useMemo(
+        () => css`
+            padding: 4px;
+        `,
+        [],
+    );
 
     return (
         <div
@@ -231,10 +269,12 @@ export default function BadgeManagement() {
                     css={css`
                         display: grid;
                         grid-template-columns: 5% 10% 20% 15% 25% 20%;
+
                         justify-content: stretch;
-                        list-style-type: none;
-                        background-color: rgba(32, 29, 43, 1);
                         text-align: center;
+                        list-style-type: none;
+
+                        background-color: rgba(32, 29, 43, 1);
                         border-radius: 10px;
                         margin: 1% 0;
                         padding: 1% 50px;
@@ -245,14 +285,31 @@ export default function BadgeManagement() {
                     `}
                 >
                     <input type="checkbox" />
-                    <span style={styleInfo}>이미지</span>
-                    <span style={styleInfo}>뱃지 이름</span>
-                    <span style={styleInfo}>태그</span>
-                    <span style={styleInfo}>달성 조건</span>
-                    <span style={styleInfo}>랭크 여부</span>
+                    <span css={spanStyle}>이미지</span>
+                    <span css={spanStyle}>뱃지 이름</span>
+                    <span css={spanStyle}> 태그</span>
+                    <span css={spanStyle}>달성 조건</span>
+                    <span css={spanStyle}>랭크 여부</span>
                 </ol>
             </div>
-            <div>{items}</div>
+            <div
+                // ManagementBox Container
+                css={css`
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    margin: 0 auto;
+                `}
+            >
+                {testInformation.map((data) => (
+                    <ManagementBox
+                        key={`management-box-${data.id}`}
+                        data={data}
+                    />
+                ))}
+            </div>
         </div>
     );
 }
