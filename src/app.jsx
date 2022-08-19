@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import StreamersPage from 'components/streamers/streamers';
 import BadgeControlPage from 'pages/badge-control';
 import BadgeForumPage from 'pages/badge-forum';
 import BadgeManagementPage from 'pages/badge-management';
 import BadgeProductionPage from 'pages/badge-production';
 import BadgesPage from 'pages/badges';
 import MainPage from 'pages/main';
+import StreamersPage from 'pages/streamers';
 
 function App() {
     return (
