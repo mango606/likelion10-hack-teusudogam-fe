@@ -56,7 +56,7 @@
         "hooks": "./src/hooks"
     },
     "lint-staged": {
-        "*.ts": [
+        "*.(js|jsx)": [
             "eslint --fix"
         ]
     }
