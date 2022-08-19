@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 
 import Badge from './badge';
 
-import tempBadgeImage from 'assets/mock/streamer/nokduro.png';
 import Title from 'components/title';
 
 const Label = styled.div`
@@ -33,33 +32,7 @@ const Badges = styled.div`
 export default function BadgeBox() {
     const theme = useTheme();
 
-    const badges = [
-        {
-            image: tempBadgeImage,
-            name: '뱃지1',
-            description: '뱃지 설명입니다',
-        },
-        {
-            image: tempBadgeImage,
-            name: '뱃지2',
-            description: '로렘입숨',
-        },
-        {
-            image: tempBadgeImage,
-            name: '뱃지3',
-            description: '으어',
-        },
-        {
-            image: tempBadgeImage,
-            name: '뱃지4',
-            description: '테테스트',
-        },
-        {
-            image: tempBadgeImage,
-            name: '뱃지5',
-            description: '테테테스트',
-        },
-    ];
+    const badges = [];
 
     const [currentBadge, setCurrentBadge] = useState(null);
 
@@ -99,9 +72,8 @@ export default function BadgeBox() {
                                 onClick={() => {
                                     setCurrentBadge(badge);
                                 }}
-                                key={`badge-${badge.name}`}
-                                badgeName={badge.name}
-                                image={badge.image}
+                                key={`badge-${badge.id}`}
+                                badge={badge}
                             />
                         ))}
                     </Badges>
@@ -112,9 +84,8 @@ export default function BadgeBox() {
                                 onClick={() => {
                                     setCurrentBadge(badge);
                                 }}
-                                key={`badge-${badge.name}`}
-                                badgeName={badge.badgeName}
-                                image={badge.image}
+                                key={`badge-${badge.id}`}
+                                badge={badge}
                             />
                         ))}
                     </Badges>
@@ -132,7 +103,6 @@ export default function BadgeBox() {
                 >
                     <div
                         css={css`
-                            background-color: white;
                             width: auto;
                             height: auto;
 
@@ -140,11 +110,7 @@ export default function BadgeBox() {
                         `}
                     >
                         {currentBadge !== null ? (
-                            <Badge
-                                image={tempBadgeImage}
-                                size={400}
-                                badgeName="BigBadge"
-                            />
+                            <Badge size={400} badge={currentBadge} />
                         ) : (
                             <div
                                 css={css`

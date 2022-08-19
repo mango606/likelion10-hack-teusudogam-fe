@@ -9,6 +9,7 @@ import CommentBox from './comment-box';
 import CommentInputBox from './comment-input-box';
 import ReputationTable from './reputation-table';
 
+import Badge from 'components/badges/badge';
 import useFetcher from 'hooks/use-fetcher';
 
 export default function BadgeEvaluationBox({ onClick, badge, enabled }) {
@@ -62,7 +63,6 @@ export default function BadgeEvaluationBox({ onClick, badge, enabled }) {
                         grid-row-end: 4;
 
                         color: ${theme.colors.primary1};
-                        background-color: ${theme.colors.white};
                         padding: 0;
                         border: 0;
                         border-radius: 8px;
@@ -75,15 +75,7 @@ export default function BadgeEvaluationBox({ onClick, badge, enabled }) {
                         height: auto;
                     `}
                 >
-                    <img
-                        src={badge.image.url}
-                        alt={badge.name}
-                        css={css`
-                            object-fit: cover;
-                            width: 100px;
-                            height: 100px;
-                        `}
-                    />
+                    <Badge badge={badge} size={100} />
                 </div>
                 <div
                     // 뱃지 이름

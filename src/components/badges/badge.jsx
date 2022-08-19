@@ -2,7 +2,7 @@ import { css, useTheme } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Badge({ onClick, image, size, badgeName }) {
+export default function Badge({ onClick, badge, size }) {
     const theme = useTheme();
 
     return (
@@ -17,7 +17,7 @@ export default function Badge({ onClick, image, size, badgeName }) {
                 `}
 
                 color: ${theme.colors.primary1};
-                background-color: ${theme.colors.white};
+                background: none;
                 padding: 0;
                 border: 0;
                 border-radius: 8px;
@@ -34,11 +34,25 @@ export default function Badge({ onClick, image, size, badgeName }) {
                         opacity: 0.8;
                     }
                 `}
+
+                @keyframes rotate {
+                    0% {
+                        transform: rotateY(0deg);
+                    }
+                    100% {
+                        transform: rotateY(360deg);
+                    }
+                }
+
+                :hover img {
+                    animation-name: rotate;
+                    animation-duration: 1s;
+                }
             `}
         >
             <img
-                src={image}
-                alt={badgeName}
+                src={badge.image.url}
+                alt={badge.name}
                 css={css`
                     object-fit: cover;
                     width: 100%;
