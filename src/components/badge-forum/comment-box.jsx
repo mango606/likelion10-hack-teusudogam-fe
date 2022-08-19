@@ -1,4 +1,5 @@
 import { css, useTheme } from '@emotion/react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
@@ -7,11 +8,8 @@ import ReputationTable from './reputation-table';
 import UserProfileImage from 'components/user-profile-image';
 
 export default function CommentBox({ comment }) {
-    // const replies = useSWR(`/badge/${id}`, useFetcher({}));
     const theme = useTheme();
     const [showReply, setShowReply] = useState(false);
-
-    // console.log(replies.data);
 
     return (
         <div
@@ -33,13 +31,12 @@ export default function CommentBox({ comment }) {
                 size={60}
             />
             <div
-                // 닉네임 및 칭호
                 css={css`
                     grid-column: 2;
                     grid-row: 1;
 
                     display: flex;
-                    align-items: flex-end;
+                    align-items: center;
                     column-gap: 5px;
 
                     margin-bottom: 5px;
@@ -55,14 +52,22 @@ export default function CommentBox({ comment }) {
                 >
                     {comment.author.userName}
                 </div>
-                <div
+                {/* <div
                     // 칭호
                     css={css`
                         font-size: 0.8rem;
                         color: ${theme.colors.white};
                     `}
                 >
-                    {comment.title}
+                    {comment.author.userName}
+                </div> */}
+                <div
+                    css={css`
+                        font-size: 0.7rem;
+                        color: ${theme.colors.gray1};
+                    `}
+                >
+                    {moment(comment.createdAt).fromNow()}
                 </div>
             </div>
             <div
@@ -133,16 +138,7 @@ export default function CommentBox({ comment }) {
 
                         width: 100%;
                     `}
-                >
-                    {/* {replies.map((reply) => (
-                        <ReplyBox
-                            image={tempImage}
-                            nickName={reply.replyNickName}
-                            title={reply.replyTitle}
-                            contents={reply.replyContents}
-                        />
-                    ))} */}
-                </div>
+                />
             )}
         </div>
     );

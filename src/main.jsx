@@ -19,6 +19,7 @@ const theme = {
         primary1: '#7262A8',
         primary2: '#3E355C',
         primary3: '#282436',
+        gray1: '#dddddd',
     },
 };
 
