@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 
@@ -82,15 +82,33 @@ const Button = styled.button`
 
 export default function BadgeProduction() {
     const form = useForm();
+    const [droppedImage, setDroppedImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState(null);
+
+    useEffect(() => {
+        if (droppedImage === null) {
+            setImageUrl(null);
+            return;
+        }
+
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(droppedImage);
+
+        fileReader.onload = () => {
+            setImageUrl(fileReader.result);
+        };
+    }, [droppedImage]);
 
     const onDrop = useCallback(
         (files) => {
             if (Array.isArray(files) && files.length > 0) {
                 form.setValue('image', files[0]);
+                setDroppedImage(files[0]);
             }
         },
         [form],
     );
+
     const { getRootProps, getInputProps } = useDropzone({
         onDrop,
     });
@@ -108,11 +126,12 @@ export default function BadgeProduction() {
                     data.append(key, value);
                 }
             });
-            console.log(data);
             axios.post('/badge', data);
         },
         [axios],
     );
+
+    console.log(imageUrl);
 
     return (
         <div
@@ -146,7 +165,7 @@ export default function BadgeProduction() {
                     <div
                         type="button"
                         css={css`
-                            background-color: rgba(239, 239, 239, 0.19);
+                            /* background-color: rgba(239, 239, 239, 0.19); */
                             grid-row: 1;
                             grid-column: 1;
 
@@ -156,10 +175,16 @@ export default function BadgeProduction() {
                             align-items: center;
                             justify-content: center;
 
-                            color: #ffffff;
-
                             border: 0;
                             border-radius: 4px;
+                            overflow: hidden;
+
+                            ${imageUrl !== null
+                                ? css`
+                                      background-image: url(${imageUrl});
+                                      background-size: cover;
+                                  `
+                                : undefined}
                         `}
                         {...getRootProps()}
                     >
@@ -171,7 +196,21 @@ export default function BadgeProduction() {
                                 pointer-events: none;
                             `}
                         />
-                        Drop Here
+                        <div
+                            css={css`
+                                color: #ffffff;
+                                width: 100%;
+                                height: 100%;
+
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+
+                                background-color: rgba(0, 0, 0, 0.25);
+                            `}
+                        >
+                            클릭하거나 드래그
+                        </div>
                     </div>
                     <div
                         // 업적 박스 (우)
