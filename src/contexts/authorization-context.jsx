@@ -47,7 +47,11 @@ export function AuthorizationProvider({ children }) {
     return (
         <AuthorizationContext.Provider
             value={useMemo(
-                () => ({ resetTokenAndRefresh, token }),
+                () => ({
+                    resetTokenAndRefresh,
+                    token,
+                    logout: resetTokenAndRefresh,
+                }),
                 [resetTokenAndRefresh, token],
             )}
         >
