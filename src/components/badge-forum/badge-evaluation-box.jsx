@@ -140,7 +140,7 @@ export default function BadgeEvaluationBox({ onClick, badge, enabled }) {
                     <ReputationTable
                         like={badge.like}
                         dislike={badge.dislike}
-                        comment={badge.comment}
+                        comment={badge.commentCount}
                         size={20}
                     />
                 </div>

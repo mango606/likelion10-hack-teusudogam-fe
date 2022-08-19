@@ -100,7 +100,6 @@ export default function CommentBox({ comment }) {
                     // 평판
                     like={comment.like}
                     dislike={comment.dislike}
-                    comment={0} // TODO: 여기 채우기
                     size={16}
                     css={css``}
                 />
