@@ -4,9 +4,7 @@ import React from 'react';
 
 import RankedIndicator from './ranked-indicator';
 
-import tempImage from 'assets/mock/dog.jpg';
-
-export default function ManagementBox({ data }) {
+export default function ManagementBox({ data, onClick }) {
     const theme = useTheme();
 
     return (
@@ -35,6 +33,7 @@ export default function ManagementBox({ data }) {
             <input
                 // 체크박스
                 type="checkbox"
+                onClick={onClick}
                 css={css`
                     grid-column: 1;
 
@@ -57,7 +56,7 @@ export default function ManagementBox({ data }) {
                 `}
             >
                 <img
-                    src={tempImage}
+                    src={data.image.url}
                     alt=""
                     css={css`
                         object-fit: cover;
@@ -80,7 +79,7 @@ export default function ManagementBox({ data }) {
                     grid-column: 4;
                 `}
             >
-                {data.tag}
+                #트위치
             </div>
             <div
                 // 달성 조건
@@ -102,4 +101,5 @@ export default function ManagementBox({ data }) {
 
 ManagementBox.propTypes = {
     data: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
 };

@@ -1,88 +1,45 @@
 import { css, useTheme } from '@emotion/react';
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
+import useSWR from 'swr';
 
 import ManagementBox from './management-box';
 
 import Glass from 'assets/mock/management/glass.png';
-import tempImage from 'assets/mock/management/wakdu1.png';
 import Title from 'components/title';
-
-// const items = () => {
-//     return (
-//         <div>
-//             <ol
-//                 css={css`
-//                     display: grid;
-//                     grid-template-columns: 5% 10% 20% 15% 25% 20%;
-//                     justify-content: stretch;
-
-//                     list-style-type: none;
-
-//                     background-color: rgba(32, 29, 43, 1);
-
-//                     text-align: center;
-
-//                     border-radius: 10px;
-//                     margin: 1% 0;
-//                     padding: 1% 50px;
-//                     width: 1000px;
-//                     height: auto;
-//                     color: white;
-//                     font-size: 15px;
-//                 `}
-//             >
-//                 <input type="checkbox" width="15px" height="15px" />
-//                 <span style={styleInfo}>
-//                     <img src={data.route} alt="" style={{ maxWidth: '80px' }} />
-//                 </span>
-//                 <span style={styleInfo}>{data.name}</span>
-//                 <span style={styleInfo}>{data.tag}</span>
-//                 <span style={styleInfo}>{data.condition}</span>
-//                 <span style={styleInfo}>{data.rank}</span>
-//             </ol>
-//         </div>
-//     );
-// });
+import useAxios from 'hooks/use-axios';
+import useFetcher from 'hooks/use-fetcher';
 
 export default function BadgeManagement() {
     const theme = useTheme();
     const [searchType, setSearchType] = useState();
     const totalBadges = 0;
+    const [checkedIds, setCheckedIds] = useState([]);
+    const axios = useAxios();
 
-    const testInformation = [
-        {
-            id: 1,
-            image: tempImage,
-            name: '웃는 왁두',
-            tag: '#우왁굳',
-            condition: '우왁굳 방송 1시간 이상 시청',
-            rank: true,
+    const toggle = useCallback(
+        (data) => {
+            if (checkedIds.includes(data.id)) {
+                setCheckedIds(
+                    checkedIds.filter((element) => {
+                        return element !== data.id;
+                    }),
+                );
+            } else {
+                setCheckedIds([...checkedIds, data.id]);
+            }
         },
-        {
-            id: 2,
-            image: tempImage,
-            name: '우쭐대는 왁두',
-            tag: '#우왁굳',
-            condition: '우왁굳 방송 2시간 이상 시청',
-            rank: false,
-        },
-        {
-            id: 3,
-            image: tempImage,
-            name: '정색하는 왁두',
-            tag: '#우왁굳',
-            condition: '우왁굳 방송 10시간 이상 시청',
-            rank: true,
-        },
-        {
-            id: 4,
-            image: tempImage,
-            name: '화난 왁두',
-            tag: '#우왁굳',
-            condition: '우왁굳 방송 5시간 이상 시청',
-            rank: true,
-        },
-    ];
+        [checkedIds],
+    );
+
+    const infomations = useSWR(
+        '/badge/findAll-created',
+        useFetcher({
+            page: 0,
+            size: 20,
+        }),
+    );
+
+    console.log(infomations.data?.[0][0]);
 
     const spanStyle = useMemo(
         () => css`
@@ -98,7 +55,9 @@ export default function BadgeManagement() {
                 width: 1000px;
                 height: 100%;
 
-                display: grid;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
             `}
         >
             <Title>뱃지 수정/삭제</Title>
@@ -111,20 +70,21 @@ export default function BadgeManagement() {
                     grid-column: 1;
 
                     justify-content: center;
+                    align-items: center;
 
                     border-radius: 10px;
                     margin: 2% 0;
-                    padding: 30px 50px;
+                    padding: 20px 40px;
 
                     width: 1000px;
-                    height: 30px;
+                    height: auto;
                 `}
             >
                 <div
                     // 폰트
                     css={css`
                         color: ${theme.colors.white};
-                        font-size: 20px;
+                        font-size: 1rem;
                         font-weight: bold;
 
                         text-align: left;
@@ -196,19 +156,24 @@ export default function BadgeManagement() {
                 </div>
             </div>
 
-            <div>
+            <div
+                // 중간 분리선
+                css={css`
+                    display: flex;
+                    margin-top: 10px;
+                `}
+            >
                 <span
                     css={css`
-                        position: relative;
-                        top: 20px;
                         color: ${theme.colors.white};
                         font-size: 15px;
+                        align-self: flex-end;
                     `}
                 >
                     총 뱃지 수
                     <span
                         css={css`
-                            color: rgba(114, 98, 168, 1);
+                            color: ${theme.colors.primary1};
                             text-align: right;
                         `}
                     >
@@ -222,36 +187,36 @@ export default function BadgeManagement() {
                     type="button"
                     css={css`
                         /* 뱃지 수정, 삭제 버튼 */
-                        background-color: rgba(114, 98, 168, 1);
+                        background-color: ${theme.colors.primary1};
                         border: none;
-                        color: white;
-                        padding: 1% 2.8%;
+                        color: ${theme.colors.white};
+                        padding: 10px 28px;
                         text-align: center;
                         font-size: 15px;
-                        margin: 1% 1%;
+                        margin: 0px;
+                        margin-left: auto;
+                        margin-right: 10px;
                         border-radius: 10px;
-
-                        position: relative;
-                        left: 65%;
                     `}
                 >
                     뱃지 수정
                 </button>
                 <button
                     type="button"
+                    onClick={() => {
+                        console.log('Del button Clicked');
+                        axios.delete(`https://api.teusubox.shop/badge/1`);
+                    }}
                     css={css`
                         /* 뱃지 수정, 삭제 버튼 */
-                        background-color: rgba(114, 98, 168, 1);
+                        background-color: ${theme.colors.primary1};
                         border: none;
-                        color: white;
-                        padding: 1% 2.8%;
+                        color: ${theme.colors.white};
+                        padding: 10px 28px;
                         text-align: center;
                         font-size: 15px;
-                        margin: 1% 1%;
-                        border-radius: 10px;
 
-                        position: relative;
-                        left: 65%;
+                        border-radius: 10px;
                     `}
                 >
                     뱃지 삭제
@@ -260,7 +225,7 @@ export default function BadgeManagement() {
 
             <hr
                 css={css`
-                    margin: 2% 0;
+                    margin: 10px 0px 20px 0px;
                 `}
             />
 
@@ -303,12 +268,16 @@ export default function BadgeManagement() {
                     margin: 0 auto;
                 `}
             >
-                {testInformation.map((data) => (
-                    <ManagementBox
-                        key={`management-box-${data.id}`}
-                        data={data}
-                    />
-                ))}
+                {infomations.data?.[0] &&
+                    infomations.data[0].map((data) => (
+                        <ManagementBox
+                            onClick={() => {
+                                toggle(data);
+                            }}
+                            key={`management-box-${data.id}`}
+                            data={data}
+                        />
+                    ))}
             </div>
         </div>
     );

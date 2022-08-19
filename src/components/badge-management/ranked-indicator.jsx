@@ -35,5 +35,9 @@ export default function RankedIndicator({ isRanked }) {
 }
 
 RankedIndicator.propTypes = {
-    isRanked: PropTypes.bool.isRequired,
+    isRanked: PropTypes.bool,
+};
+
+RankedIndicator.defaultProps = {
+    isRanked: false,
 };
