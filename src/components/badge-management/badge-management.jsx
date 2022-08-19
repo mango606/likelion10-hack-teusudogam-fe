@@ -269,10 +269,12 @@ export default function BadgeManagement() {
                     css={css`
                         display: grid;
                         grid-template-columns: 5% 10% 20% 15% 25% 20%;
+
                         justify-content: stretch;
-                        list-style-type: none;
-                        background-color: rgba(32, 29, 43, 1);
                         text-align: center;
+                        list-style-type: none;
+
+                        background-color: rgba(32, 29, 43, 1);
                         border-radius: 10px;
                         margin: 1% 0;
                         padding: 1% 50px;
