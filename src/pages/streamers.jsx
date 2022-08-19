@@ -1,10 +1,10 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
-import BadgeProduction from 'components/badge-production/badge-production';
 import Header from 'components/header';
+import Streamers from 'components/streamers/streamers';
 
-export default function ProductionPage() {
+export default function StreamersPage() {
     return (
         <div>
             <Header />
@@ -17,7 +17,7 @@ export default function ProductionPage() {
                     margin: 60px auto;
                 `}
             >
-                <BadgeProduction />
+                <Streamers />
             </div>
         </div>
     );
