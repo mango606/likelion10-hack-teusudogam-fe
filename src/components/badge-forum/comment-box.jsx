@@ -29,7 +29,7 @@ export default function CommentBox({ comment }) {
                     grid-row-start: 1;
                     grid-row-end: 4;
                 `}
-                image={comment.author}
+                image={comment.author.profileImage}
                 size={60}
             />
             <div
@@ -53,7 +53,7 @@ export default function CommentBox({ comment }) {
                         color: ${theme.colors.white};
                     `}
                 >
-                    {comment.nickName}
+                    {comment.author.userName}
                 </div>
                 <div
                     // 칭호

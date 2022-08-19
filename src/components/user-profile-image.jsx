@@ -16,6 +16,12 @@ export default function UserProfileImage({ image, size, className, onClick }) {
                 border: 0;
                 background: 0;
                 padding: 0;
+
+                ${onClick !== undefined
+                    ? css`
+                          cursor: pointer;
+                      `
+                    : undefined}
             `}
             onClick={onClick}
         >
@@ -36,9 +42,11 @@ UserProfileImage.propTypes = {
     image: PropTypes.string.isRequired,
     size: PropTypes.number,
     className: PropTypes.string,
+    onClick: PropTypes.func,
 };
 
 UserProfileImage.defaultProps = {
     size: 50,
     className: undefined,
+    onClick: undefined,
 };
