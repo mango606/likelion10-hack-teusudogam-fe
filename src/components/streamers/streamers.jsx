@@ -339,6 +339,398 @@ export default function BadgeManagement() {
                         </span>
                     </span>
                 </Label>
+                <Label>
+                    <span style={styleInfo}>
+                        <img
+                            src={tempBadgeImage}
+                            alt=""
+                            css={css`
+                                width: 200px;
+                                height: 130px;
+                                object-fit: cover;
+                                margin: 0 -8px;
+                            `}
+                        />
+                    </span>
+
+                    <span
+                        css={css`
+                            font-weight: bold;
+                            font-size: 15px;
+                            margin: 5px -15px;
+                        `}
+                    >
+                        우왁굳
+                    </span>
+
+                    <span style={styleInfo}>
+                        팔로워
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            7.6
+                        </span>
+                        만
+                    </span>
+
+                    <span style={styleInfo}>
+                        ♥
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            1.7K
+                        </span>
+                    </span>
+                </Label>
+                <Label>
+                    <span style={styleInfo}>
+                        <img
+                            src={tempBadgeImage}
+                            alt=""
+                            css={css`
+                                width: 200px;
+                                height: 130px;
+                                object-fit: cover;
+                                margin: 0 -8px;
+                            `}
+                        />
+                    </span>
+
+                    <span
+                        css={css`
+                            font-weight: bold;
+                            font-size: 15px;
+                            margin: 5px -15px;
+                        `}
+                    >
+                        우왁굳
+                    </span>
+
+                    <span style={styleInfo}>
+                        팔로워
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            7.6
+                        </span>
+                        만
+                    </span>
+
+                    <span style={styleInfo}>
+                        ♥
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            1.7K
+                        </span>
+                    </span>
+                </Label>
+                <Label>
+                    <span style={styleInfo}>
+                        <img
+                            src={tempBadgeImage}
+                            alt=""
+                            css={css`
+                                width: 200px;
+                                height: 130px;
+                                object-fit: cover;
+                                margin: 0 -8px;
+                            `}
+                        />
+                    </span>
+
+                    <span
+                        css={css`
+                            font-weight: bold;
+                            font-size: 15px;
+                            margin: 5px -15px;
+                        `}
+                    >
+                        우왁굳
+                    </span>
+
+                    <span style={styleInfo}>
+                        팔로워
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            7.6
+                        </span>
+                        만
+                    </span>
+
+                    <span style={styleInfo}>
+                        ♥
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            1.7K
+                        </span>
+                    </span>
+                </Label>
+                <Label>
+                    <span style={styleInfo}>
+                        <img
+                            src={tempBadgeImage}
+                            alt=""
+                            css={css`
+                                width: 200px;
+                                height: 130px;
+                                object-fit: cover;
+                                margin: 0 -8px;
+                            `}
+                        />
+                    </span>
+
+                    <span
+                        css={css`
+                            font-weight: bold;
+                            font-size: 15px;
+                            margin: 5px -15px;
+                        `}
+                    >
+                        우왁굳
+                    </span>
+
+                    <span style={styleInfo}>
+                        팔로워
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            7.6
+                        </span>
+                        만
+                    </span>
+
+                    <span style={styleInfo}>
+                        ♥
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            1.7K
+                        </span>
+                    </span>
+                </Label>
+                <Label>
+                    <span style={styleInfo}>
+                        <img
+                            src={tempBadgeImage}
+                            alt=""
+                            css={css`
+                                width: 200px;
+                                height: 130px;
+                                object-fit: cover;
+                                margin: 0 -8px;
+                            `}
+                        />
+                    </span>
+
+                    <span
+                        css={css`
+                            font-weight: bold;
+                            font-size: 15px;
+                            margin: 5px -15px;
+                        `}
+                    >
+                        우왁굳
+                    </span>
+
+                    <span style={styleInfo}>
+                        팔로워
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            7.6
+                        </span>
+                        만
+                    </span>
+
+                    <span style={styleInfo}>
+                        ♥
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            1.7K
+                        </span>
+                    </span>
+                </Label>
+                <Label>
+                    <span style={styleInfo}>
+                        <img
+                            src={tempBadgeImage}
+                            alt=""
+                            css={css`
+                                width: 200px;
+                                height: 130px;
+                                object-fit: cover;
+                                margin: 0 -8px;
+                            `}
+                        />
+                    </span>
+
+                    <span
+                        css={css`
+                            font-weight: bold;
+                            font-size: 15px;
+                            margin: 5px -15px;
+                        `}
+                    >
+                        우왁굳
+                    </span>
+
+                    <span style={styleInfo}>
+                        팔로워
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            7.6
+                        </span>
+                        만
+                    </span>
+
+                    <span style={styleInfo}>
+                        ♥
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            1.7K
+                        </span>
+                    </span>
+                </Label>
+                <Label>
+                    <span style={styleInfo}>
+                        <img
+                            src={tempBadgeImage}
+                            alt=""
+                            css={css`
+                                width: 200px;
+                                height: 130px;
+                                object-fit: cover;
+                                margin: 0 -8px;
+                            `}
+                        />
+                    </span>
+
+                    <span
+                        css={css`
+                            font-weight: bold;
+                            font-size: 15px;
+                            margin: 5px -15px;
+                        `}
+                    >
+                        우왁굳
+                    </span>
+
+                    <span style={styleInfo}>
+                        팔로워
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            7.6
+                        </span>
+                        만
+                    </span>
+
+                    <span style={styleInfo}>
+                        ♥
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            1.7K
+                        </span>
+                    </span>
+                </Label>
+                <Label>
+                    <span style={styleInfo}>
+                        <img
+                            src={tempBadgeImage}
+                            alt=""
+                            css={css`
+                                width: 200px;
+                                height: 130px;
+                                object-fit: cover;
+                                margin: 0 -8px;
+                            `}
+                        />
+                    </span>
+
+                    <span
+                        css={css`
+                            font-weight: bold;
+                            font-size: 15px;
+                            margin: 5px -15px;
+                        `}
+                    >
+                        우왁굳
+                    </span>
+
+                    <span style={styleInfo}>
+                        팔로워
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            7.6
+                        </span>
+                        만
+                    </span>
+
+                    <span style={styleInfo}>
+                        ♥
+                        <span
+                            css={css`
+                                text-align: right;
+                            `}
+                        >
+                            {' '}
+                            1.7K
+                        </span>
+                    </span>
+                </Label>
             </div>
         </div>
     );
