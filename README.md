@@ -9,7 +9,7 @@ https://github.com/mango606/likelion-hack-fe-teusudogam/assets/75062110/2c649807
 # 2️⃣ 프로젝트 기획
 <img src="https://github.com/mango606/likelion10-hack-fe-teusudogam/assets/75062110/fa831bcb-731b-4d1a-b070-3ca91c6f248c" width="800" />
 
-# 3️⃣ 프로젝트 발표 자료.[pdf](https://drive.google.com/file/d/1OXPdN2meNIXOs-n2ow4Udp2CyIVnhznk/view?usp=sharing)
+# 3️⃣ 프로젝트 발표 자료.[pdf](https://drive.google.com/file/d/1Ty1byVs-NKkJIZv5TPhMeW4mk9zmlhOP/view?usp=sharing)
 <img src="https://github.com/mango606/likelion-hack-fe-teusudogam/assets/75062110/c1bcf05f-573d-41bd-97c9-241c49a20749" width="800" />
 <img src="https://github.com/mango606/likelion-hack-fe-teusudogam/assets/75062110/792dec7e-e608-4f88-acf4-b55946cadb41" width="800" />
 <img src="https://github.com/mango606/likelion-hack-fe-teusudogam/assets/75062110/c92aace2-7df0-47aa-a917-ac74fd4f9374" width="800" />
@@ -18,8 +18,8 @@ https://github.com/mango606/likelion-hack-fe-teusudogam/assets/75062110/2c649807
 <img src="https://github.com/mango606/likelion-hack-fe-teusudogam/assets/75062110/c6ad32fe-d00f-4d37-8f33-f87cbee4bbb5" width="800" />
 <img src="https://github.com/mango606/likelion-hack-fe-teusudogam/assets/75062110/b613ac98-7d8f-4ff6-938d-63aaa7851314" width="800" />
 
-### 1) 아이디어톤 발표 자료.[pdf](https://drive.google.com/file/d/1ITwx9SLnixUpXa-lMpOmtj9-7eQkpV3D/view?usp=sharing)
-### 2) 피그마 자료.[pdf](https://drive.google.com/file/d/1NtrJ8GLzaRnjqHaqqs82qJnLdDlnbddx/view?usp=sharing)
+### 1) 아이디어톤 발표 자료.[pdf](https://drive.google.com/file/d/1JfLixI2TTvUxS19QBjbdOlO9Cl077IbO/view?usp=sharing)
+### 2) 피그마 자료.[pdf](https://drive.google.com/file/d/1GXz2R1zDswB7-RDZMkLCLL74Cpp4g1Dh/view?usp=sharing)
 
 # 4️⃣ 프로젝트 후기
 - 리액트를 처음 사용한 프로젝트
